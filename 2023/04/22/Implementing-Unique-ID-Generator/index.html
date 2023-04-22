@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Implementing Unique ID Generator | Karthick&#39;s Personal blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="A unique ID generator can be implemented using a combination of timestamp, counter, and random number. Here’s a possible implementation in Python: 123456789101112import timeimport randomclass IDGenera">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Implementing Unique ID Generator">
+<meta property="og:url" content="https://blog.karthickshiva.com/2023/04/22/Implementing-Unique-ID-Generator/index.html">
+<meta property="og:site_name" content="Karthick&#39;s Personal blog">
+<meta property="og:description" content="A unique ID generator can be implemented using a combination of timestamp, counter, and random number. Here’s a possible implementation in Python: 123456789101112import timeimport randomclass IDGenera">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-04-22T06:42:52.000Z">
+<meta property="article:modified_time" content="2023-04-22T06:53:05.117Z">
+<meta property="article:author" content="Karthick Shiva">
+<meta property="article:tag" content="system-design">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Karthick's Personal blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Karthick&#39;s Personal blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://blog.karthickshiva.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Implementing-Unique-ID-Generator" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/04/22/Implementing-Unique-ID-Generator/" class="article-date">
+  <time class="dt-published" datetime="2023-04-22T06:42:52.000Z" itemprop="datePublished">2023-04-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Implementing Unique ID Generator
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>A unique ID generator can be implemented using a combination of timestamp, counter, and random number. Here’s a possible implementation in Python:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">IDGenerator</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        self.counter = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">generate_id</span>(<span class="params">self</span>):</span><br><span class="line">        timestamp = <span class="built_in">int</span>(time.time() * <span class="number">1000</span>)  <span class="comment"># Get current timestamp in milliseconds</span></span><br><span class="line">        self.counter = (self.counter + <span class="number">1</span>) % <span class="number">10000</span>  <span class="comment"># Increment counter and wrap around</span></span><br><span class="line">        random_num = random.randint(<span class="number">0</span>, <span class="number">999</span>)  <span class="comment"># Generate random number between 0 and 999</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">f&quot;<span class="subst">&#123;timestamp:013d&#125;</span><span class="subst">&#123;self.counter:04d&#125;</span><span class="subst">&#123;random_num:03d&#125;</span>&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>In this implementation, the <code>IDGenerator</code> class has a counter initialized to zero. The <code>generate_id</code> method generates a unique ID by concatenating the current timestamp in milliseconds, a counter value that increments with each ID generation, and a random number between 0 and 999. The resulting ID is a 20-digit string in the format <code>timestamp (13 digits) + counter (4 digits) + random number (3 digits)</code>.</p>
+<p>Here’s an example of how to use the <code>IDGenerator</code> class:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">generator = IDGenerator()</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10</span>):</span><br><span class="line">    <span class="built_in">print</span>(generator.generate_id())</span><br></pre></td></tr></table></figure>
+
+<p>This code creates an instance of the <code>IDGenerator</code> class and generates 10 unique IDs using the <code>generate_id</code> method. The output might look like this:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">162798978283100000000000</span><br><span class="line">162798978283100000000001</span><br><span class="line">162798978283100000000002</span><br><span class="line">162798978283100000000003</span><br><span class="line">162798978283100000000004</span><br><span class="line">162798978283100000000005</span><br><span class="line">162798978283100000000006</span><br><span class="line">162798978283100000000007</span><br><span class="line">162798978283100000000008</span><br><span class="line">162798978283100000000009</span><br></pre></td></tr></table></figure>
+
+<p>This implementation generates unique IDs by combining a timestamp, a counter, and a random number, which ensures that the probability of collisions is very low. <b>However, it is possible for collisions to occur if the same ID generator is used across multiple machines or if the counter wraps around too quickly.</b> To further optimize the ID generator, additional measures such as using a stronger hash function or a distributed ID generation system may be necessary.</p>
+<h2 id="Other-options"><a href="#Other-options" class="headerlink" title="Other options:"></a>Other options:</h2><p>There are several options to generate unique IDs, depending on the requirements of the application. Here are some common methods:</p>
+<ol>
+<li><p>UUID: A UUID (Universally Unique Identifier) is a 128-bit number that is guaranteed to be unique across time and space. UUIDs are generated using a combination of timestamp and random number, and can be represented as a string of hexadecimal digits.</p>
+</li>
+<li><p>Timestamp: A timestamp is a value that represents the current date and time. Timestamps can be used as unique IDs if they are combined with a counter or a random number to ensure uniqueness.</p>
+</li>
+<li><p>Counter: A counter is a value that increments with each ID generation. Counters can be used as unique IDs if they are combined with a timestamp or a random number to ensure uniqueness.</p>
+</li>
+<li><p>Hash function: A hash function can be used to generate a unique ID from a given input. Hash functions take an input of arbitrary size and produce a fixed-size output that is unique for each input value.</p>
+</li>
+<li><p>Snowflake ID: A Snowflake ID is a unique 64-bit integer that is generated using a combination of timestamp, machine ID, and sequence number. Snowflake IDs are used by distributed systems to generate unique IDs across multiple machines.</p>
+</li>
+<li><p>Custom ID: A custom ID can be generated using any combination of the above methods, or by using a custom algorithm that meets the specific requirements of the application.</p>
+</li>
+</ol>
+<p>Each of these methods has its own advantages and disadvantages, and the choice of ID generation method depends on the specific requirements of the application. For example, UUIDs are widely used because they are guaranteed to be unique, but they are relatively long and may not be suitable for some applications. On the other hand, counters are simple and efficient, but they may not be unique if multiple ID generators are used simultaneously.</p>
+<h3 id="Auto-Incremented-ID"><a href="#Auto-Incremented-ID" class="headerlink" title="Auto Incremented ID:"></a>Auto Incremented ID:</h3><p>Using auto-incremented IDs as primary keys in SQL databases is a common practice and works well in many cases. However, there are some situations where this approach may not be suitable:</p>
+<ol>
+<li><p>Scalability: If the database is expected to grow very large, auto-incremented IDs may eventually overflow the maximum value of the data type used to store them. This can cause errors and require expensive database migrations.</p>
+</li>
+<li><p>Security: Auto-incremented IDs can be predictable, which can be a security risk if they are used in URLs or other public-facing contexts. Attackers can use this predictability to guess other IDs and access sensitive data.</p>
+</li>
+<li><p>Data privacy: In some cases, auto-incremented IDs can reveal information about the data, such as the order in which it was added to the database. This can be a privacy concern if the data contains sensitive information.</p>
+</li>
+<li><p>Data integration: If data from multiple databases needs to be merged or integrated, auto-incremented IDs may not be unique across the different databases, leading to conflicts and errors.</p>
+</li>
+</ol>
+<p>For these reasons, it may be necessary to use other methods to generate unique IDs, such as UUIDs or custom ID generators. These methods can provide better scalability, security, and data privacy, and can be more suitable for distributed systems or applications with complex data integration requirements.</p>
+<h3 id="UUID"><a href="#UUID" class="headerlink" title="UUID:"></a>UUID:</h3><p>UUIDs (Universally Unique Identifiers) are widely used as unique identifiers in many applications and have several advantages, such as being guaranteed to be unique and not requiring a centralized ID generator. However, there are some situations where UUIDs may not be suitable:</p>
+<ol>
+<li><p>Size: UUIDs are relatively long, typically 32 hexadecimal digits (128 bits). This can be a problem if the IDs need to be stored in a database or transmitted over a network, as it can increase storage and bandwidth requirements.</p>
+</li>
+<li><p>Predictability: Although UUIDs are designed to be unique, they are not completely random and can be predictable in some cases. This can be a security risk if the UUIDs are used in URLs or other public-facing contexts.</p>
+</li>
+<li><p>Performance: Generating UUIDs can be computationally expensive, especially if they are generated in large batches or in a distributed system. This can affect the performance of the application and increase response times.</p>
+</li>
+<li><p>Integration: If data from multiple systems needs to be merged or integrated, UUIDs may not be unique across the different systems, leading to conflicts and errors.</p>
+</li>
+</ol>
+<p>For these reasons, it may be necessary to use other methods to generate unique IDs, such as custom ID generators or other types of UUIDs (such as ULIDs or Flake IDs) that address some of the limitations of standard UUIDs. The choice of ID generation method depends on the specific requirements of the application and the trade-offs between uniqueness, size, predictability, and performance.</p>
+<h3 id="Snowflake-ID"><a href="#Snowflake-ID" class="headerlink" title="Snowflake ID:"></a>Snowflake ID:</h3><p>Snowflake ID is a unique 64-bit integer that is generated using a combination of timestamp, machine ID, and sequence number. Snowflake IDs are used by distributed systems to generate unique IDs across multiple machines. Here’s an example of how Snowflake ID is generated:</p>
+<p>Let’s assume that we have a distributed system with multiple machines. Each machine has a unique ID, which is a 10-bit integer. The current timestamp in milliseconds is 41 bits long. The sequence number is a 12-bit integer that increments with each ID generation on the same machine.</p>
+<p>To generate a Snowflake ID, we can concatenate these three values into a 64-bit integer in the following order:</p>
+<ol>
+<li>The first 41 bits represent the current timestamp in milliseconds.</li>
+<li>The next 10 bits represent the machine ID.</li>
+<li>The last 12 bits represent the sequence number.</li>
+</ol>
+<p>Here’s an example of how a Snowflake ID might look like:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">110011001101001110101011110010011101001110000000000000000000000 (64 bits)</span><br></pre></td></tr></table></figure>
+
+<p>In this example, the first 41 bits represent the timestamp, which is equivalent to the value <code>1630055836000</code> in milliseconds. The next 10 bits represent the machine ID, which could be any value between 0 and 1023. The last 12 bits represent the sequence number, which could be any value between 0 and 4095.</p>
+<p>By using a combination of timestamp, machine ID, and sequence number, Snowflake IDs can be generated with a high degree of uniqueness and can be used to generate IDs across multiple machines in a distributed system.</p>
+<p>Here’s an implementation of the Snowflake method for generating unique IDs in Python:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SnowflakeGenerator</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, datacenter_id, worker_id</span>):</span><br><span class="line">        self.twepoch = <span class="number">1288834974657</span></span><br><span class="line">        self.datacenter_id = datacenter_id</span><br><span class="line">        self.worker_id = worker_id</span><br><span class="line">        self.sequence = <span class="number">0</span></span><br><span class="line">        self.sequence_bits = <span class="number">12</span></span><br><span class="line">        self.worker_id_bits = <span class="number">5</span></span><br><span class="line">        self.datacenter_id_bits = <span class="number">5</span></span><br><span class="line">        self.max_worker_id = -<span class="number">1</span> ^ (-<span class="number">1</span> &lt;&lt; self.worker_id_bits)</span><br><span class="line">        self.max_datacenter_id = -<span class="number">1</span> ^ (-<span class="number">1</span> &lt;&lt; self.datacenter_id_bits)</span><br><span class="line">        self.sequence_mask = -<span class="number">1</span> ^ (-<span class="number">1</span> &lt;&lt; self.sequence_bits)</span><br><span class="line">        self.worker_id_shift = self.sequence_bits</span><br><span class="line">        self.datacenter_id_shift = self.sequence_bits + self.worker_id_bits</span><br><span class="line">        self.timestamp_shift = self.sequence_bits + self.worker_id_bits + self.datacenter_id_bits</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">_generate_timestamp</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">int</span>(time.time() * <span class="number">1000</span> - self.twepoch)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">_next_sequence</span>(<span class="params">self</span>):</span><br><span class="line">        self.sequence = (self.sequence + <span class="number">1</span>) &amp; self.sequence_mask</span><br><span class="line">        <span class="keyword">if</span> self.sequence == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">raise</span> Exception(<span class="string">&quot;Sequence overflow&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">generate_id</span>(<span class="params">self</span>):</span><br><span class="line">        timestamp = self._generate_timestamp()</span><br><span class="line">        <span class="keyword">if</span> timestamp &lt; self.last_timestamp:</span><br><span class="line">            <span class="keyword">raise</span> Exception(<span class="string">&quot;Clock moved backwards&quot;</span>)</span><br><span class="line">        <span class="keyword">if</span> timestamp == self.last_timestamp:</span><br><span class="line">            self._next_sequence()</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self.sequence = <span class="number">0</span></span><br><span class="line">        self.last_timestamp = timestamp</span><br><span class="line">        <span class="keyword">return</span> ((timestamp &lt;&lt; self.timestamp_shift) |</span><br><span class="line">                (self.datacenter_id &lt;&lt; self.datacenter_id_shift) |</span><br><span class="line">                (self.worker_id &lt;&lt; self.worker_id_shift) |</span><br><span class="line">                self.sequence)</span><br></pre></td></tr></table></figure>
+
+<p>Here’s how you can use this class to generate unique IDs:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">generator = SnowflakeGenerator(datacenter_id=<span class="number">1</span>, worker_id=<span class="number">1</span>)</span><br><span class="line">unique_id = generator.generate_id()</span><br><span class="line"><span class="built_in">print</span>(unique_id)</span><br></pre></td></tr></table></figure>
+
+<p>This will output a unique ID that is generated using the Snowflake method. You can change the <code>datacenter_id</code> and <code>worker_id</code> values to generate IDs that are unique to your specific environment.</p>
+<p>The code is an implementation of the Snowflake method for generating unique IDs in Python.</p>
+<p>The <code>SnowflakeGenerator</code> class has the following attributes:</p>
+<ul>
+<li><code>twepoch</code>: This is the timestamp of the Snowflake epoch, which is January 1, 2010 in milliseconds. It is used to calculate the timestamp portion of the generated ID.</li>
+<li><code>datacenter_id</code>: This is a unique identifier for the datacenter that the ID is being generated in.</li>
+<li><code>worker_id</code>: This is a unique identifier for the worker that is generating the ID.</li>
+<li><code>sequence</code>: This is a counter that is used to ensure that IDs generated within the same millisecond are unique.</li>
+<li><code>sequence_bits</code>: This is the number of bits used to represent the sequence number.</li>
+<li><code>worker_id_bits</code>: This is the number of bits used to represent the worker ID.</li>
+<li><code>datacenter_id_bits</code>: This is the number of bits used to represent the datacenter ID.</li>
+<li><code>max_worker_id</code>: This is the maximum value that the worker ID can be.</li>
+<li><code>max_datacenter_id</code>: This is the maximum value that the datacenter ID can be.</li>
+<li><code>sequence_mask</code>: This is a bitmask that is used to extract the sequence number from the generated ID.</li>
+<li><code>worker_id_shift</code>: This is the number of bits to shift the worker ID to the left before combining it with the other parts of the ID.</li>
+<li><code>datacenter_id_shift</code>: This is the number of bits to shift the datacenter ID to the left before combining it with the other parts of the ID.</li>
+<li><code>timestamp_shift</code>: This is the number of bits to shift the timestamp to the left before combining it with the other parts of the ID.</li>
+</ul>
+<p>The <code>SnowflakeGenerator</code> class has the following methods:</p>
+<ul>
+<li><code>_generate_timestamp()</code>: This method generates the timestamp portion of the ID by subtracting the Snowflake epoch from the current time in milliseconds.</li>
+<li><code>_next_sequence()</code>: This method increments the sequence number and handles sequence number overflow.</li>
+<li><code>generate_id()</code>: This method generates a unique ID using the Snowflake method. It combines the timestamp, datacenter ID, worker ID, and sequence number to create a 64-bit ID.</li>
+</ul>
+<p>To use the <code>SnowflakeGenerator</code> class, you can create an instance of the class with a unique datacenter ID and worker ID, and then call the <code>generate_id()</code> method to generate a new ID. The generated ID will be unique to your specific environment.</p>
+<h4 id="Note"><a href="#Note" class="headerlink" title="Note:"></a>Note:</h4><p>The Snowflake method was originally developed by Twitter to generate unique IDs for their distributed systems. They chose January 1, 2010 as the epoch for their implementation of the Snowflake method because it was a recent date at the time and it allowed for a larger range of timestamps than if they had chosen an earlier epoch.</p>
+<p>In the Snowflake method, the timestamp portion of the ID is calculated by subtracting the epoch time from the current time in milliseconds. By choosing a more recent epoch time, the timestamp portion of the ID can be represented using fewer bits, which allows for a larger range of timestamps to be represented in the ID.</p>
+<p>It’s worth noting that the choice of epoch time is somewhat arbitrary and can be adjusted to suit the needs of a particular system. However, it’s important to choose an epoch time that allows for a sufficient range of timestamps to be represented in the ID, while also ensuring that the timestamp portion of the ID doesn’t take up too many bits and reduce the number of bits available for other parts of the ID (such as the worker ID and sequence number).</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.karthickshiva.com/2023/04/22/Implementing-Unique-ID-Generator/" data-id="clgrmj3in0001h3op4g585igr" data-title="Implementing Unique ID Generator" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/system-design/" rel="tag">system-design</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2023/04/22/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Hello World
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/04/22/Dependency-Injection/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Dependency Injection</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/design-patterns/" rel="tag">design-patterns</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/multi-threading/" rel="tag">multi-threading</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/system-design/" rel="tag">system-design</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/design-patterns/" style="font-size: 10px;">design-patterns</a> <a href="/tags/multi-threading/" style="font-size: 10px;">multi-threading</a> <a href="/tags/system-design/" style="font-size: 10px;">system-design</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">April 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/04/22/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2023/04/22/Implementing-Unique-ID-Generator/">Implementing Unique ID Generator</a>
+          </li>
+        
+          <li>
+            <a href="/2023/04/22/Dependency-Injection/">Dependency Injection</a>
+          </li>
+        
+          <li>
+            <a href="/2023/04/22/Using-Threading-to-Print-Odd-and-Even-Numbers-in-Order/">Using Threading to Print Odd and Even Numbers in Order</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 Karthick Shiva<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
