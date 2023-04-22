@@ -3,17 +3,17 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
+title: Karthick's Personal blog
 subtitle: ''
-description: ''
+description: 'Valuable insights and practical advice on a range of technical topics from a seasoned software developer.'
 keywords:
-author: John Doe
+author: Karthick Shiva
 language: en
-timezone: ''
+timezone: 'IST'
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: http://example.com
+url: https://blog.karthickshiva.com
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
@@ -102,4 +102,7 @@ theme: landscape
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
-  type: ''
+  type: git
+  repo: https://github.com/karthickshiva/blog.karthickshiva.com
+  # example, https://github.com/hexojs/hexojs.github.io
+  branch: gh-pages
