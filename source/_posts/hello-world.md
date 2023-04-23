@@ -1,5 +1,7 @@
 ---
 title: Hello World
+date: 2023-04-22 10:00:00
+tags: misc
 ---
 Hello and welcome to my new blog! My name is Karthick Shiva and I'm a software developer with a passion for all things technical. I've been working in the field for several years now, and I've had the opportunity to work on a wide variety of subjects across different domains.
 
