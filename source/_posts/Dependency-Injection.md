@@ -2,6 +2,7 @@
 title: Dependency Injection
 date: 2023-04-22 12:07:05
 tags: design-patterns
+highlight: true
 ---
 
 Dependency injection is a design pattern used in software engineering that allows objects to be created with their dependencies supplied from outside sources. In other words, instead of an object creating its dependencies itself, the dependencies are "injected" into the object from an external source.

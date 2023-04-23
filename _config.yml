@@ -1,4 +1,4 @@
-title: Karthick's Personal blog
+title: Karthick Shiva
 subtitle: ''
 description: >-
   Valuable insights and practical advice on a range of technical topics from a
@@ -28,7 +28,7 @@ external_link:
   enable: true
   field: site
   exclude: ''
-filename_case: 0
+filename_case: 1
 render_drafts: false
 post_asset_folder: false
 relative_link: false
@@ -61,6 +61,7 @@ pagination_dir: page
 include: null
 exclude: null
 ignore: null
+theme: flexy
 deploy:
   type: git
   repo: https://github.com/karthickshiva/blog.karthickshiva.com
