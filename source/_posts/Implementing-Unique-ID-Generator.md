@@ -2,9 +2,12 @@
 title: Implementing Unique ID Generator
 date: 2023-04-22 12:12:52
 tags: system-design
+categories:
+  - System Design
 ---
 
 A unique ID generator can be implemented using a combination of timestamp, counter, and random number. Here's a possible implementation in Python:
+<!--more-->
 
 ```python
 import time

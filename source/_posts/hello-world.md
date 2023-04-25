@@ -2,8 +2,11 @@
 title: Hello World
 date: 2023-04-22 10:00:00
 tags: misc
+categories:
+  - Misc
 ---
 Hello and welcome to my new blog! My name is Karthick Shiva and I'm a software developer with a passion for all things technical. I've been working in the field for several years now, and I've had the opportunity to work on a wide variety of subjects across different domains.
+<!--more-->
 
 I've always been interested in sharing my knowledge and experiences with others, which is why I decided to start this blog. Here, I plan to write about a range of technical topics that I find interesting, from programming languages and frameworks to software architecture and design patterns.
 

@@ -2,8 +2,11 @@
 title: Using Threading to Print Odd and Even Numbers in Order
 date: 2023-04-22 11:31:22
 tags: multi-threading
+categories:
+  - Operating System
 ---
 In this blog post, we'll explore how to use threading in Java to print odd and even numbers in order. Threading is a powerful technique that allows us to execute multiple threads of code concurrently, which can be useful for a wide variety of applications, including parallel processing, network programming, and more.
+<!--more-->
 
 In this example, we'll use threading to print a sequence of odd and even numbers in order. We'll start by creating two threads, one for printing odd numbers and one for printing even numbers. Each thread will execute a loop that prints the appropriate numbers, and we'll use a synchronization primitive called a semaphore to ensure that the threads execute in the correct order.
 

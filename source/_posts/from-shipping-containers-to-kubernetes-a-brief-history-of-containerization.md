@@ -2,9 +2,12 @@
 title: 'From Shipping Containers to Kubernetes: A Brief History of Containerization'
 date: 2023-04-24 19:38:14
 tags: system-design
+categories:
+  - Technology
 ---
 
 Containerization has come a long way since the days of shipping containers. In the world of technology, containerization has become a popular way to package and deploy applications. One of the most popular containerization platforms is Kubernetes. In this post, we'll take a look at the history of containerization and how it has evolved to become the powerful platform that is Kubernetes.
+<!--more-->
 
 ## The Early Days of Containerization
 

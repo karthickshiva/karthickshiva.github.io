@@ -7,7 +7,7 @@ keywords: null
 author: Karthick Shiva
 language: en
 timezone: Asia/Kolkata
-url: https://blog.karthickshiva.com
+url: https://blog.karthickshiva.dev
 permalink: ':year/:month/:day/:title/'
 permalink_defaults: null
 pretty_urls:
@@ -61,8 +61,8 @@ pagination_dir: page
 include: null
 exclude: null
 ignore: null
-theme: landscape
+theme: minos
 deploy:
   type: git
-  repo: https://github.com/karthickshiva/blog.karthickshiva.com
+  repo: https://github.com/karthickshiva/karthickshiva.github.io
   branch: gh-pages
