@@ -30,7 +30,7 @@ Dependency injection frameworks are available in many programming languages to h
 
 Here are some examples of dependency injection in Java:
 
-1. Constructor Injection:
+## Constructor Injection:
 
 ```java
 public class UserService {
@@ -48,7 +48,7 @@ public class UserService {
 
 In this example, the `UserService` class has a dependency on the `UserRepository` class, which is passed to its constructor. The `UserRepository` object is injected into the `UserService` object when it is created. This allows the `UserService` object to use the methods of the `UserRepository` object without creating it itself.
 
-2. Setter Injection:
+## Setter Injection:
 
 
 ```java
@@ -68,7 +68,7 @@ public class OrderService {
 
 In this example, the `OrderService` class has a dependency on the `PaymentService` class, which is set using a setter method. The `PaymentService` object is injected into the `OrderService` object after it is created. This allows the `OrderService` object to use the methods of the `PaymentService` object without creating it itself.
 
-3. Interface Injection:
+## Interface Injection:
 
 ```java
 public interface Logger {
