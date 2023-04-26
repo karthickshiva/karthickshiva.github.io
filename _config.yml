@@ -62,6 +62,23 @@ include: null
 exclude: null
 ignore: null
 theme: minos
+robotstxt:
+  useragent: "*"
+  allow:
+  - /
+  sitemap: https://blog.karthickshiva.dev/sitemap.xml
+nofollow:
+  enable: true
+  exclude:
+  - blog.karthickshiva.dev
+feed:
+  type: rss2
+  path: rss2.xml
+  limit: 20
+sitemap:
+  path: sitemap.xml
+  tag: false
+  category: false
 deploy:
   type: git
   repo: https://github.com/karthickshiva/karthickshiva.github.io
