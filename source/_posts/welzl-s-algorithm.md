@@ -138,7 +138,7 @@ where $(x_1, y_1)$ and $(x_2, y_2)$ are the coordinates of the two points.
 Using the inverse determinant and edge length approach we can find the circle that passes through three points.
 
 
-## Implementation:
+## Demonstration:
 Here is my version of Welzl's algorithm's implementation:
 
 ```JavaScript
