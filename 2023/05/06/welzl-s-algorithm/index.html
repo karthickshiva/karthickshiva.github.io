@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9L7QW33Z38"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9L7QW33Z38');
+</script>
+<meta charset="utf-8">
+<link rel="canonical" href="https://blog.karthickshiva.dev/2023/05/06/welzl-s-algorithm/">
+<title>Collision, Randomization and Welzl&#39;s Algorithm - Karthick Shiva</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+<meta name="description" content="Valuable insights and practical advice on a range of technical topics from a seasoned software developer.">
+
+
+
+
+
+    <meta name="description" content="Have you ever played a 3D video game and wondered how the game engine detects collisions between objects? I recently found myself thinking about this while playing a popular racing game. As I was">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Collision, Randomization and Welzl&#39;s Algorithm">
+<meta property="og:url" content="https://blog.karthickshiva.dev/2023/05/06/welzl-s-algorithm/index.html">
+<meta property="og:site_name" content="Karthick Shiva">
+<meta property="og:description" content="Have you ever played a 3D video game and wondered how the game engine detects collisions between objects? I recently found myself thinking about this while playing a popular racing game. As I was">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.ibb.co/nftPWTt/Screenshot-2023-05-06-at-9-45-45-AM.png">
+<meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Smallest_circle_problem.svg/512px-Smallest_circle_problem.svg.png">
+<meta property="og:image" content="https://i.ibb.co/HrCQGYv/Screenshot-2023-05-06-at-10-02-57-AM.png">
+<meta property="article:published_time" content="2023-05-06T04:40:20.000Z">
+<meta property="article:modified_time" content="2023-05-06T06:28:33.179Z">
+<meta property="article:author" content="Karthick Shiva">
+<meta property="article:tag" content="algorithm">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.ibb.co/nftPWTt/Screenshot-2023-05-06-at-9-45-45-AM.png">
+
+
+
+
+
+<link rel="icon" href="/favicon.png">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/rss2.xml" title="Karthick Shiva" type="application/rss+xml">
+</head>
+<body>
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                    
+                    Karthick Shiva
+                    
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item " href="/archives">Archives</a>
+            
+            <a class="navbar-item " href="/categories/system-design">System Design</a>
+            
+            <a class="navbar-item " href="/categories/operating-system">Operating System</a>
+            
+            <a class="navbar-item " href="/categories/technology">Technology</a>
+            
+            <a class="navbar-item " href="/about">About</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            <a class="navbar-item search" title="Search" href="javascript:;">
+                <i class="fas fa-search"></i>
+            </a>
+            
+            
+            
+            <a class="navbar-item" title="GitHub" target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/karthickshiva/">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+               
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            Collision, Randomization and Welzl&#39;s Algorithm
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            
+                <time datetime="2023-05-06T04:40:20.000Z" itemprop="datePublished">May 6 2023</time>
+            
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/algorithms/">Algorithms</a>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            14 minutes read (About 2077 words)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <html><head></head><body><center>
+<img src="https://i.ibb.co/nftPWTt/Screenshot-2023-05-06-at-9-45-45-AM.png" alt="3D Car racing" border="0" height="200px" width="400px">
+</center>
+
+<p>Have you ever played a 3D video game and wondered how the game engine detects collisions between objects? I recently found myself thinking about this while playing a popular racing game. As I was racing my car around the track, I couldn’t help but wonder how the game engine was able to detect collisions between my car and the other cars on the track.</p>
+<span id="more"></span>
+
+<p>After doing some research, I learned that one of the ways that game engines detect collisions is by using the minimum enclosing sphere algorithm. This algorithm is used to find the smallest sphere that encloses a set of points in 3D space, which is useful in detecting collisions between objects.</p>
+<p>In the game I was playing, each car was represented by a 3D model, which was made up of a large number of points in 3D space. The game engine used the minimum enclosing sphere algorithm to calculate the minimum enclosing sphere of each car’s 3D model. By doing this, the game engine was able to determine if the minimum enclosing spheres of two cars intersected, indicating a collision.</p>
+<p>I was fascinated by this and started thinking about other applications of the minimum enclosing sphere algorithm. I realized that it could be used in various real-life simulations, such as simulations of fluid dynamics and molecular dynamics. In these simulations, the algorithm could be used to detect collisions between particles or fluid elements, which could help to simulate the behavior of fluids or molecules in real-world applications.</p>
+<h2 id="Minimum-Enclosing-Circle"><a href="#Minimum-Enclosing-Circle" class="headerlink" title="Minimum Enclosing Circle:"></a>Minimum Enclosing Circle:</h2><center>
+<a title="Claudio Rocchini, CC BY-SA 3.0 <https://creativecommons.org/licenses/by-sa/3.0>, via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:Smallest_circle_problem.svg" rel="external nofollow noopener noreferrer" target="_blank"><img width="512" alt="Smallest circle problem" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Smallest_circle_problem.svg/512px-Smallest_circle_problem.svg.png"></a>
+</center>
+
+<p>The minimum enclosing circle problem involves finding the smallest circle that encloses a set of points in a 2D plane. This problem can be solved using a similar approach to the minimum enclosing sphere algorithm, but with some modifications to account for the reduced dimensionality.</p>
+<p>Feeling inspired by the idea of the minimum enclosing circle problem, I decided to try and solve it myself. I thought to myself, “how hard could it be to find the smallest circle that encloses a set of points in a 2D plane?”</p>
+<p>I started by sketching out some points on a piece of paper and drawing circles around them. I quickly realized that this was not going to work, as it was difficult to determine which circle was the smallest. I needed a more systematic approach.</p>
+<p>Next, I tried to come up with a naive solution. I thought about selecting two points from the set of points and finding the distance between them. I could then draw a circle with a radius equal to half the distance between the two points. This circle would definitely enclose the two points, but it may not enclose all the other points in the set.</p>
+<p>I then thought about selecting a third point and finding the circle that passes through all three points. This circle would definitely enclose the three points, but it may not be the smallest circle that encloses all the points in the set.</p>
+<p>I decided to try a brute force algorithm to solve the minimum enclosing circle problem. While brute force algorithms are not always the most efficient, they can be useful in certain situations, especially when dealing with small sets of points.</p>
+<p>My brute force algorithm involved checking every possible circle that could be drawn around the set of points. I started by selecting three points from the set and finding the smallest circle that encloses them. I then added one point at a time and checked if the circle still enclosed all the points. If it did, then I continued adding points until all the points in the set were included. If not, then I discarded the circle and started again with a different set of three points.</p>
+<p>While this algorithm was not the most efficient, it was a valid solution to the problem. It guaranteed that the smallest possible circle that encloses all the points in the set would be found. However, it was not practical for larger sets of points, as the number of possible circles to check would become prohibitively large.</p>
+<h2 id="Welzl’s-algorithm"><a href="#Welzl’s-algorithm" class="headerlink" title="Welzl’s algorithm:"></a>Welzl’s algorithm:</h2><p>Since my brute force algorithm was not practical for larger sets of points, I did some research to see if there were more efficient algorithms available for solving the minimum enclosing circle problem. To my surprise, I discovered that the problem had once been a hot research topic and that many algorithms had been developed to solve it.</p>
+<p>As I delved deeper into the research, I discovered that one of the most popular algorithms for solving the minimum enclosing circle problem was the Welzl’s algorithm. This algorithm involved selecting points one at a time and finding the minimum enclosing circle that included all the previously selected points.</p>
+<p>The Welzl’s algorithm was much more efficient than my brute force algorithm and could handle larger sets of points. It was also more accurate, as it guaranteed that the smallest possible circle that encloses all the points in the set would be found.</p>
+<p>The algorithm goes as follows:</p>
+<figure class="highlight plaintext hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Algorithm: Welzl's Algorithm for Minimum Enclosing Circle</span><br><span class="line"></span><br><span class="line">Input: A set of n points P in a 2D plane</span><br><span class="line">Output: The minimum enclosing circle that encloses all the points in P</span><br><span class="line"></span><br><span class="line">1. if |P| = 1, return a circle with radius 0 centered at the only point in P.</span><br><span class="line">2. if |P| = 2, return the circle with diameter defined by the two points in P.</span><br><span class="line">3. Randomly shuffle the points in P.</span><br><span class="line">4. Let R be the set of points chosen so far.</span><br><span class="line">5. Let D be the minimum enclosing circle that encloses the points in R.</span><br><span class="line">6. For each point p in P \ R:</span><br><span class="line">    a. If p is inside D, continue to the next point.</span><br><span class="line">    b. Add p to R.</span><br><span class="line">    c. Recursively call the algorithm on the set of points R and update D.</span><br><span class="line">7. Return the minimum enclosing circle D that encloses all the points in P.</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="Randomization"><a href="#Randomization" class="headerlink" title="Randomization:"></a>Randomization:</h2><p>Before diving into the implementation of the Welzl’s algorithm, it’s worth noting the importance of random shuffling in the algorithm. The algorithm shuffles the points randomly before selecting them, which makes the algorithm randomized.</p>
+<p>Randomness is a pretty cool concept, don’t you think? It’s like the universe is playing dice with us and we’re just trying to figure out the rules of the game. But did you know that randomness can actually help us optimize problems? It’s true!</p>
+<p>By shuffling the points randomly, the Welzl’s algorithm is able to explore different orders of points and find the one that leads to the most efficient and accurate solution. This is especially important when dealing with large sets of points, where the number of possible orders is large and the algorithm can benefit from the added randomness.</p>
+<p>Did you also know that randomness can be used to optimize other algorithms too? For example, Monte Carlo simulations use random numbers to simulate the behavior of a system and estimate the probability of certain outcomes. This is super useful in fields like finance, engineering, and physics, where it’s hard to simulate a system using deterministic algorithms.</p>
+<p>Randomness is even used in sorting algorithms, like randomized quicksort, to avoid worst-case scenarios. And in cryptography, randomized primality testing is used to determine whether a given number is prime or composite.</p>
+<p>It’s amazing how randomness can be applied in so many different ways to make algorithms more efficient and accurate. It just goes to show that sometimes we need to embrace the chaos to find the best solutions.</p>
+<h2 id="Implementation"><a href="#Implementation" class="headerlink" title="Implementation:"></a>Implementation:</h2><p>After learning about the Welzl’s algorithm for minimum enclosing circle, I was excited to implement it and see it in action. I decided to create a mini project to demonstrate the algorithm and its various applications.</p>
+<p>Despite the challenges, I was determined to implement the Welzl’s algorithm and see it in action. I started by writing the pseudo code in paper and then translated it into JavaScript code. I created a simple GUI that allowed the user to input a set of points and see the minimum enclosing circle that encloses all the points.</p>
+<p>After an hour of coding and debugging, I finally had a working implementation of the Welzl’s algorithm. I was amazed at how quickly the algorithm was able to find the minimum enclosing circle for even large sets of points.</p>
+<h2 id="Midpoint-and-circumcenter"><a href="#Midpoint-and-circumcenter" class="headerlink" title="Midpoint and circumcenter:"></a>Midpoint and circumcenter:</h2><p>In addition to the algorithm, we may need to revisit our high school math. Let’s revisit some high school math concepts and discuss how to find a circle that passes through two points and three points.</p>
+<p>Finding a circle that passes through two points is a relatively simple process. We can use the midpoint of the line segment connecting the two points as the center of the circle, and the distance between the two points as the radius of the circle. This circle will pass through both points.</p>
+<p>To find the midpoint of the line segment connecting two points, we can use the following formula:</p>
+<p>$$ \text{midpoint} = \left(\frac{x_1 + x_2}{2}, \frac{y_1 + y_2}{2}\right) $$</p>
+<p>where $(x_1, y_1)$ and $(x_2, y_2)$ are the coordinates of the two points that define the line segment.</p>
+<p>Once we have the midpoint, we can find the distance between the two points using the distance formula:</p>
+<p>$$ \text{distance} = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} $$</p>
+<p>where $(x_1, y_1)$ and $(x_2, y_2)$ are the coordinates of the two points.</p>
+<p>The radius of the circle will be equal to half the distance between the two points, and the center of the circle will be the midpoint of the line segment connecting the two points.</p>
+<center><img src="https://i.ibb.co/HrCQGYv/Screenshot-2023-05-06-at-10-02-57-AM.png" alt="Circumcenter" width="300px" border="0"></center>
+
+<p>To begin with, finding a circle that passes through three points is a bit more involved than finding a circle that passes through two points. One way to do this is to use the fact that the perpendicular bisectors of the three line segments connecting the three points will intersect at the center of the circle. We can then use the distance between the center and any one of the points as the radius of the circle.</p>
+<p>Another approach to finding the circle that passes through three points is to use the inverse determinant and edge length approach. This method involves finding the circumcenter of the triangle formed by the three points and then using the distance between the circumcenter and any one of the points as the radius of the circle.</p>
+<p>To find the circumcenter of the triangle formed by the three points, we can use the following formula:</p>
+<p>$$<br>x = \frac{a^2(b^2 + c^2 - a^2)x_1 + b^2(a^2 + c^2 - b^2)x_2 + c^2(a^2 + b^2 - c^2)x_3}{2(a^2(b^2 + c^2 - a^2) + b^2(a^2 + c^2 - b^2) + c^2(a^2 + b^2 - c^2))}<br>$$</p>
+<p>$$<br>y = \frac{a^2(b^2 + c^2 - a^2)y_1 + b^2(a^2 + c^2 - b^2)y_2 + c^2(a^2 + b^2 - c^2)y_3}{2(a^2(b^2 + c^2 - a^2) + b^2(a^2 + c^2 - b^2) + c^2(a^2 + b^2 - c^2))}<br>$$</p>
+<p>where $(x_1, y_1)$, $(x_2, y_2)$, and $(x_3, y_3)$ are the coordinates of the three points, and $a$, $b$, and $c$ are the lengths of the sides of the triangle opposite the three points, respectively.</p>
+<p>Once we have the coordinates of the circumcenter, we can use the distance formula to find the radius of the circle. The distance formula is:</p>
+<p>$$<br>distance = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}<br>$$</p>
+<p>where $(x_1, y_1)$ and $(x_2, y_2)$ are the coordinates of the two points.</p>
+<p>Using the inverse determinant and edge length approach we can find the circle that passes through three points.</p>
+<h2 id="Demonstration"><a href="#Demonstration" class="headerlink" title="Demonstration:"></a>Demonstration:</h2><p>Here is my version of Welzl’s algorithm’s implementation:</p>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="title function_">createWelZelCircle</span>(<span class="hljs-params">points</span>) {</span><br><span class="line">  <span class="hljs-keyword">let</span> minCircle = <span class="hljs-literal">null</span>;</span><br><span class="line">  <span class="hljs-keyword">let</span> supportSet = [];</span><br><span class="line">  <span class="hljs-keyword">if</span> (points.<span class="hljs-property">length</span> &gt; <span class="hljs-number">1</span>) {</span><br><span class="line">    <span class="title function_">shuffleArray</span>(points);</span><br><span class="line">    <span class="hljs-keyword">let</span> p = points[<span class="hljs-number">0</span>];</span><br><span class="line">    <span class="hljs-keyword">let</span> totalPoints = points.<span class="hljs-property">length</span>;</span><br><span class="line">    minCircle = <span class="hljs-keyword">new</span> <span class="title class_">Circle</span>(p);</span><br><span class="line">    <span class="hljs-keyword">let</span> index = <span class="hljs-number">1</span>;</span><br><span class="line">    supportSet.<span class="title function_">push</span>(p);</span><br><span class="line">    <span class="hljs-keyword">while</span> (index &lt; totalPoints) {</span><br><span class="line">      <span class="hljs-keyword">let</span> pi = points[index];</span><br><span class="line">      <span class="hljs-keyword">if</span> (!supportSet.<span class="title function_">some</span>(<span class="hljs-function">(<span class="hljs-params">p</span>) =&gt;</span> p === pi) &amp;&amp; !minCircle.<span class="title function_">contains</span>(pi)) {</span><br><span class="line">        <span class="hljs-keyword">let</span> newCircle = <span class="title function_">updateCircle</span>(supportSet, pi);</span><br><span class="line">        <span class="hljs-keyword">if</span> (newCircle &amp;&amp; newCircle.<span class="hljs-property">radius</span> &gt; minCircle.<span class="hljs-property">radius</span>) {</span><br><span class="line">          minCircle = newCircle;</span><br><span class="line">          index = <span class="hljs-number">0</span>;</span><br><span class="line">          <span class="hljs-keyword">continue</span>;</span><br><span class="line">        }</span><br><span class="line">      }</span><br><span class="line">      index++;</span><br><span class="line">    }</span><br><span class="line">  }</span><br><span class="line">  <span class="hljs-keyword">return</span> minCircle;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">function</span> <span class="title function_">updateCircle</span>(<span class="hljs-params">supportSet, point</span>) {</span><br><span class="line">  <span class="hljs-keyword">let</span> updatedCircle = <span class="hljs-literal">null</span>;</span><br><span class="line">  <span class="hljs-keyword">const</span> supportSetSize = supportSet.<span class="hljs-property">length</span>;</span><br><span class="line">  <span class="hljs-keyword">switch</span> (supportSetSize) {</span><br><span class="line">    <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>:</span><br><span class="line">      updatedCircle = <span class="title function_">updateCircleWithOnePoint</span>(supportSet, point);</span><br><span class="line">      <span class="hljs-keyword">break</span>;</span><br><span class="line">    <span class="hljs-keyword">case</span> <span class="hljs-number">2</span>:</span><br><span class="line">      updatedCircle = <span class="title function_">updateCircleWithTwoPoints</span>(supportSet, point);</span><br><span class="line">      <span class="hljs-keyword">break</span>;</span><br><span class="line">    <span class="hljs-keyword">case</span> <span class="hljs-number">3</span>:</span><br><span class="line">      updatedCircle = <span class="title function_">updateCircleWithThreePoints</span>(supportSet, point);</span><br><span class="line">      <span class="hljs-keyword">break</span>;</span><br><span class="line">    <span class="hljs-attr">default</span>:</span><br><span class="line">      <span class="hljs-keyword">break</span>;</span><br><span class="line">  }</span><br><span class="line">  <span class="hljs-keyword">return</span> updatedCircle;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>Here is the output:</p>
+<iframe src="https://codesandbox.io/embed/welzels-algorithm-0mz7bk?fontsize=14&amp;hidenavigation=1&amp;theme=dark&amp;view=preview" style="width:100%; height:700px; border:0; border-radius: 4px; overflow:hidden;" title="welzels-algorithm" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
+
+<p>$~$</p>
+<p>Overall, my curiosity about how collisions are detected in 3D games led me to discover the minimum enclosing sphere algorithm and its various applications in simulations and other fields. It’s amazing how video games can inspire us to learn and explore new concepts and technologies.</p>
+<p>To learn about this algorithm more: <a target="_blank" rel="external nofollow noopener noreferrer" href="https://people.inf.ethz.ch/emo/PublFiles/SmallEnclDisk_LNCS555_91.pdf">https://people.inf.ethz.ch/emo/PublFiles/SmallEnclDisk_LNCS555_91.pdf</a></p>
+</body></html>
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/algorithm/">#algorithm</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/2024/01/28/unleashing-the-cloud-a-historical-odyssey-of-cloud-storage/">Unleashing the Cloud: A Historical Odyssey of Cloud Storage</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/2023/04/24/from-shipping-containers-to-kubernetes-a-brief-history-of-containerization/">From Shipping Containers to Kubernetes: A Brief History of Containerization</a>
+            
+        </span>
+    </div>
+    
+</article>
+
+
+<div class="sharebox">
+    
+<div class="sharethis-inline-share-buttons"></div>
+<script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=64474d17b4717c0019327ddd&amp;product=inline-share-buttons&amp;source=platform" async="async"></script>
+
+</div>
+
+
+
+<div class="comments">
+    <h3 class="title is-4">Comments</h3>
+    
+<script>
+    var disqus_config = function () {
+        this.page.url = 'https://blog.karthickshiva.dev/2023/05/06/welzl-s-algorithm/';
+        this.page.identifier = '2023/05/06/welzl-s-algorithm/';
+        
+        this.language = 'en';
+        
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'blog-karthickshiva-dev' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</div>
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2024 Karthick Shiva&nbsp;
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            <div class="column is-narrow">
+                <div class="columns is-mobile is-multiline is-centered">
+                
+                    
+                <a class="column is-narrow has-text-black" title="GitHub" target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/karthickshiva/">
+                    
+                    GitHub
+                    
+                </a>
+                
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</footer>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" target="_blank" rel="external nofollow noopener noreferrer" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("en-AU");
+</script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+</script>
+
+    
+    
+    
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            if (typeof($.fn.lightGallery) === 'function') {
+                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof($.fn.justifiedGallery) === 'function') {
+                $('.justified-gallery > p > .gallery-item').unwrap();
+                $('.justified-gallery').justifiedGallery();
+            }
+        });
+    })(jQuery);
+</script>
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <style>
+        .hljs {
+            position: relative;
+        }
+
+        .hljs .clipboard-btn {
+            float: right;
+            color: #9a9a9a;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hljs .clipboard-btn:hover {
+          color: #8a8a8a;
+        }
+
+        .hljs > .clipboard-btn {
+            display: none;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+        .hljs:hover > .clipboard-btn {
+            display: inline;
+        }
+
+        .hljs > figcaption > .clipboard-btn {
+            margin-right: 4px;
+        }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('figure.hljs').each(function(i, figure) {
+          var codeId = 'code-' + i;
+          var code = figure.querySelector('.code');
+          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
+          code.id = codeId;
+          copyButton.addClass('clipboard-btn');
+          copyButton.attr('data-clipboard-target-id', codeId);
+
+          var figcaption = figure.querySelector('figcaption');
+
+          if (figcaption) {
+            figcaption.append(copyButton[0]);
+          } else {
+            figure.prepend(copyButton[0]);
+          }
+        })
+
+        var clipboard = new ClipboardJS('.clipboard-btn', {
+          target: function(trigger) {
+            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+          }
+        });
+        clipboard.on('success', function(e) {
+          e.clearSelection();
+        })
+      })
+    </script>
+
+    
+    
+
+    
+
+
+
+<script src="/js/script.js"></script>
+
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+    
+</body>
+</html>
