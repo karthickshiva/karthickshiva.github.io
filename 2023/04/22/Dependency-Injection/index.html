@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head>
+    <meta charset="utf-8">
+<link rel="canonical" href="https://blog.karthickshiva.dev/2023/04/22/dependency-injection/">
+<title>Dependency Injection - Karthick Shiva</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+<meta name="description" content="Valuable insights and practical advice on a range of technical topics from a seasoned software developer.">
+
+
+
+
+
+    <meta name="description" content="Dependency injection is a design pattern used in software engineering that allows objects to be created with their dependencies supplied from outside sources. In other words, instead of an object crea">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Dependency Injection">
+<meta property="og:url" content="https://blog.karthickshiva.dev/2023/04/22/Dependency-Injection/index.html">
+<meta property="og:site_name" content="Karthick Shiva">
+<meta property="og:description" content="Dependency injection is a design pattern used in software engineering that allows objects to be created with their dependencies supplied from outside sources. In other words, instead of an object crea">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-04-22T06:37:05.000Z">
+<meta property="article:modified_time" content="2023-04-25T04:17:15.779Z">
+<meta property="article:author" content="Karthick Shiva">
+<meta property="article:tag" content="design-patterns">
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+<link rel="icon" href="/favicon.png">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/rss2.xml" title="Karthick Shiva" type="application/rss+xml">
+</head>
+<body>
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                    
+                    Karthick Shiva
+                    
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item " href="/archives">Archives</a>
+            
+            <a class="navbar-item " href="/categories/system-design">System Design</a>
+            
+            <a class="navbar-item " href="/categories/operating-system">Operating System</a>
+            
+            <a class="navbar-item " href="/categories/technology">Technology</a>
+            
+            <a class="navbar-item " href="/about">About</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            <a class="navbar-item search" title="Search" href="javascript:;">
+                <i class="fas fa-search"></i>
+            </a>
+            
+            
+            
+            <a class="navbar-item" title="GitHub" target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/karthickshiva/">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+               
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            Dependency Injection
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            
+                <time datetime="2023-04-22T06:37:05.000Z" itemprop="datePublished">Apr 22 2023</time>
+            
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/design-patterns/">Design Patterns</a>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            5 minutes read (About 679 words)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <html><head></head><body><p>Dependency injection is a design pattern used in software engineering that allows objects to be created with their dependencies supplied from outside sources. In other words, instead of an object creating its dependencies itself, the dependencies are “injected” into the object from an external source.</p>
+<span id="more"></span>
+
+<p>The main benefits of dependency injection are:</p>
+<ol>
+<li><p>Decoupling: By injecting dependencies, objects are not tightly coupled to their dependencies, which makes them more modular and easier to test.</p>
+</li>
+<li><p>Testability: Because dependencies can be easily replaced with mock objects, unit testing becomes easier and more effective.</p>
+</li>
+<li><p>Reusability: Injected dependencies can be reused across multiple objects, reducing code duplication and improving maintainability.</p>
+</li>
+</ol>
+<p>There are three main types of dependency injection:</p>
+<ol>
+<li><p>Constructor Injection: Dependencies are passed to an object’s constructor when it is created.</p>
+</li>
+<li><p>Setter Injection: Dependencies are set on an object using setter methods.</p>
+</li>
+<li><p>Interface Injection: Objects are required to implement a specific interface that defines the dependencies they require.</p>
+</li>
+</ol>
+<p>Dependency injection frameworks are available in many programming languages to help automate the process of injecting dependencies. These frameworks use a combination of reflection and configuration files to automatically inject dependencies into objects at runtime. Examples of dependency injection frameworks include Spring Framework for Java and AngularJS for JavaScript.</p>
+<p>Here are some examples of dependency injection in Java:</p>
+<h2 id="Constructor-Injection"><a href="#Constructor-Injection" class="headerlink" title="Constructor Injection:"></a>Constructor Injection:</h2><figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="title class_">UserService</span> {</span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> UserRepository userRepository;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">public</span> <span class="title function_">UserService</span><span class="hljs-params">(UserRepository userRepository)</span> {</span><br><span class="line">        <span class="hljs-built_in">this</span>.userRepository = userRepository;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">public</span> User <span class="title function_">getUserById</span><span class="hljs-params">(<span class="hljs-type">int</span> id)</span> {</span><br><span class="line">        <span class="hljs-keyword">return</span> userRepository.findById(id);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>In this example, the <code>UserService</code> class has a dependency on the <code>UserRepository</code> class, which is passed to its constructor. The <code>UserRepository</code> object is injected into the <code>UserService</code> object when it is created. This allows the <code>UserService</code> object to use the methods of the <code>UserRepository</code> object without creating it itself.</p>
+<h2 id="Setter-Injection"><a href="#Setter-Injection" class="headerlink" title="Setter Injection:"></a>Setter Injection:</h2><figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="title class_">OrderService</span> {</span><br><span class="line">    <span class="hljs-keyword">private</span> PaymentService paymentService;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="title function_">setPaymentService</span><span class="hljs-params">(PaymentService paymentService)</span> {</span><br><span class="line">        <span class="hljs-built_in">this</span>.paymentService = paymentService;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="title function_">processOrder</span><span class="hljs-params">(Order order)</span> {</span><br><span class="line">        paymentService.processPayment(order.getPayment());</span><br><span class="line">        <span class="hljs-comment">// process order logic</span></span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>In this example, the <code>OrderService</code> class has a dependency on the <code>PaymentService</code> class, which is set using a setter method. The <code>PaymentService</code> object is injected into the <code>OrderService</code> object after it is created. This allows the <code>OrderService</code> object to use the methods of the <code>PaymentService</code> object without creating it itself.</p>
+<h2 id="Interface-Injection"><a href="#Interface-Injection" class="headerlink" title="Interface Injection:"></a>Interface Injection:</h2><figure class="highlight java hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="title class_">Logger</span> {</span><br><span class="line">    <span class="hljs-keyword">void</span> <span class="title function_">log</span><span class="hljs-params">(String message)</span>;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="title class_">ConsoleLogger</span> <span class="hljs-keyword">implements</span> <span class="title class_">Logger</span> {</span><br><span class="line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="title function_">log</span><span class="hljs-params">(String message)</span> {</span><br><span class="line">        System.out.println(message);</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="title class_">UserService</span> {</span><br><span class="line">    <span class="hljs-keyword">private</span> Logger logger;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="title function_">setLogger</span><span class="hljs-params">(Logger logger)</span> {</span><br><span class="line">        <span class="hljs-built_in">this</span>.logger = logger;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">public</span> User <span class="title function_">getUserById</span><span class="hljs-params">(<span class="hljs-type">int</span> id)</span> {</span><br><span class="line">        logger.log(<span class="hljs-string">"Getting user by id: "</span> + id);</span><br><span class="line">        <span class="hljs-comment">// get user logic</span></span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>In this example, the <code>UserService</code> class has a dependency on the <code>Logger</code> interface, which is required to be implemented by any object that wants to be injected into the <code>UserService</code> object. The <code>ConsoleLogger</code> class implements the <code>Logger</code> interface and is injected into the <code>UserService</code> object using a setter method. This allows the <code>UserService</code> object to use the methods of the <code>Logger</code> object without creating it itself.</p>
+<p>These are just a few examples of how dependency injection can be used in Java. There are many other ways to use dependency injection, and the specific implementation depends on the needs of the application.</p>
+<p>Let’s say we have a class called “UserService” that is responsible for managing user data. This class has a dependency on a database connection to retrieve and store user data.</p>
+<p>Without dependency injection, the UserService class would have to create its own database connection object, which would tightly couple the UserService class to the database connection implementation.</p>
+<p>With dependency injection, we can pass in the database connection object as a dependency to the UserService class. This allows us to easily swap out different database connection implementations without having to modify the UserService class.</p>
+<p>For example, we could create a <code>MySQLDatabaseConnection</code> class and a <code>PostgreSQLDatabaseConnection</code> class, both implementing the same interface. We can then pass in either of these objects to the UserService class depending on which database we want to use.</p>
+<p>This makes our code more flexible and easier to maintain, as we can easily swap out dependencies without having to modify the code that uses them.</p>
+</body></html>
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/design-patterns/">#design-patterns</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/2023/04/22/Implementing-Unique-ID-Generator/">Implementing Unique ID Generator</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/2023/04/22/Using-Threading-to-Print-Odd-and-Even-Numbers-in-Order/">Using Threading to Print Odd and Even Numbers in Order</a>
+            
+        </span>
+    </div>
+    
+</article>
+
+
+<div class="sharebox">
+    
+<div class="sharethis-inline-share-buttons"></div>
+<script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=64474d17b4717c0019327ddd&amp;product=inline-share-buttons&amp;source=platform" async="async"></script>
+
+</div>
+
+
+
+<div class="comments">
+    <h3 class="title is-4">Comments</h3>
+    
+<script>
+    var disqus_config = function () {
+        this.page.url = 'https://blog.karthickshiva.dev/2023/04/22/Dependency-Injection/';
+        this.page.identifier = '2023/04/22/Dependency-Injection/';
+        
+        this.language = 'en';
+        
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'blog-karthickshiva-dev' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</div>
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2023 Karthick Shiva&nbsp;
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            <div class="column is-narrow">
+                <div class="columns is-mobile is-multiline is-centered">
+                
+                    
+                <a class="column is-narrow has-text-black" title="GitHub" target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/karthickshiva/">
+                    
+                    GitHub
+                    
+                </a>
+                
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</footer>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" target="_blank" rel="external nofollow noopener noreferrer" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("en-AU");
+</script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+</script>
+
+    
+    
+    
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            if (typeof($.fn.lightGallery) === 'function') {
+                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof($.fn.justifiedGallery) === 'function') {
+                $('.justified-gallery > p > .gallery-item').unwrap();
+                $('.justified-gallery').justifiedGallery();
+            }
+        });
+    })(jQuery);
+</script>
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <style>
+        .hljs {
+            position: relative;
+        }
+
+        .hljs .clipboard-btn {
+            float: right;
+            color: #9a9a9a;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hljs .clipboard-btn:hover {
+          color: #8a8a8a;
+        }
+
+        .hljs > .clipboard-btn {
+            display: none;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+        .hljs:hover > .clipboard-btn {
+            display: inline;
+        }
+
+        .hljs > figcaption > .clipboard-btn {
+            margin-right: 4px;
+        }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('figure.hljs').each(function(i, figure) {
+          var codeId = 'code-' + i;
+          var code = figure.querySelector('.code');
+          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
+          code.id = codeId;
+          copyButton.addClass('clipboard-btn');
+          copyButton.attr('data-clipboard-target-id', codeId);
+
+          var figcaption = figure.querySelector('figcaption');
+
+          if (figcaption) {
+            figcaption.append(copyButton[0]);
+          } else {
+            figure.prepend(copyButton[0]);
+          }
+        })
+
+        var clipboard = new ClipboardJS('.clipboard-btn', {
+          target: function(trigger) {
+            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+          }
+        });
+        clipboard.on('success', function(e) {
+          e.clearSelection();
+        })
+      })
+    </script>
+
+    
+    
+
+    
+
+
+
+<script src="/js/script.js"></script>
+
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+    
+</body>
+</html>

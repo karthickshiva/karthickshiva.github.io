@@ -2,8 +2,8 @@
 <html class="has-navbar-fixed-top">
 <head>
     <meta charset="utf-8">
-<link rel="canonical" href="https://blog.karthickshiva.dev/">
-<title>Karthick Shiva</title>
+<link rel="canonical" href="https://blog.karthickshiva.dev/2023/04/24/from-shipping-containers-to-kubernetes-a-brief-history-of-containerization/">
+<title>From Shipping Containers to Kubernetes: A Brief History of Containerization - Karthick Shiva</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
@@ -17,14 +17,17 @@
 
 
 
-    <meta name="description" content="Valuable insights and practical advice on a range of technical topics from a seasoned software developer.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Karthick Shiva">
-<meta property="og:url" content="https://blog.karthickshiva.dev/index.html">
+    <meta name="description" content="Containerization has come a long way since the days of shipping containers. In the world of technology, containerization has become a popular way to package and deploy applications. One of the most po">
+<meta property="og:type" content="article">
+<meta property="og:title" content="From Shipping Containers to Kubernetes: A Brief History of Containerization">
+<meta property="og:url" content="https://blog.karthickshiva.dev/2023/04/24/from-shipping-containers-to-kubernetes-a-brief-history-of-containerization/index.html">
 <meta property="og:site_name" content="Karthick Shiva">
-<meta property="og:description" content="Valuable insights and practical advice on a range of technical topics from a seasoned software developer.">
+<meta property="og:description" content="Containerization has come a long way since the days of shipping containers. In the world of technology, containerization has become a popular way to package and deploy applications. One of the most po">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-04-24T14:08:14.000Z">
+<meta property="article:modified_time" content="2023-04-25T03:53:50.466Z">
 <meta property="article:author" content="Karthick Shiva">
+<meta property="article:tag" content="system-design">
 <meta name="twitter:card" content="summary">
 
 
@@ -121,11 +124,10 @@
 
     <section class="section">
     <div class="container">
-    
-        <article class="article content gallery" itemscope itemprop="blogPost">
+    <article class="article content gallery" itemscope itemprop="blogPost">
     <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
         
-            <a href="/2023/04/24/from-shipping-containers-to-kubernetes-a-brief-history-of-containerization/" itemprop="url">From Shipping Containers to Kubernetes: A Brief History of Containerization</a>
+            From Shipping Containers to Kubernetes: A Brief History of Containerization
         
     </h1>
     <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
@@ -150,189 +152,83 @@
     </div>
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-        <html><head></head><body><p>Containerization has come a long way since the days of shipping containers. In the world of technology, containerization has become a popular way to package and deploy applications. One of the most popular containerization platforms is Kubernetes. In this post, we’ll take a look at the history of containerization and how it has evolved to become the powerful platform that is Kubernetes.</p></body></html>
-        <p class="article-more-link">
-            <a href="/2023/04/24/from-shipping-containers-to-kubernetes-a-brief-history-of-containerization/#more">Read More</a>
-        </p>
+        <html><head></head><body><p>Containerization has come a long way since the days of shipping containers. In the world of technology, containerization has become a popular way to package and deploy applications. One of the most popular containerization platforms is Kubernetes. In this post, we’ll take a look at the history of containerization and how it has evolved to become the powerful platform that is Kubernetes.</p>
+<span id="more"></span>
+
+<h2 id="The-Early-Days-of-Containerization"><a href="#The-Early-Days-of-Containerization" class="headerlink" title="The Early Days of Containerization"></a>The Early Days of Containerization</h2><p>The concept of containerization dates back to the 1950s, when shipping companies were looking for a way to transport goods more efficiently. The shipping industry developed standardized containers that could be easily loaded onto ships, trains, and trucks. This made it easier to transport goods across long distances and reduced the cost of shipping.</p>
+<p>In the 1970s, the concept of containerization was applied to the world of computing. The idea was to create a standardized way to package and deploy software applications. This would make it easier to move applications between different environments, such as development, testing, and production.</p>
+<h2 id="The-Rise-of-Virtualization"><a href="#The-Rise-of-Virtualization" class="headerlink" title="The Rise of Virtualization"></a>The Rise of Virtualization</h2><p>In the 1990s, virtualization became a popular way to package and deploy applications. Virtualization allowed multiple applications to run on a single server, making it more efficient and cost-effective. However, virtualization had its drawbacks. It was resource-intensive and required a lot of overhead.</p>
+<h2 id="The-Birth-of-Docker"><a href="#The-Birth-of-Docker" class="headerlink" title="The Birth of Docker"></a>The Birth of Docker</h2><p>In 2013, Docker was introduced as a new way to package and deploy applications. Docker was built on top of the Linux container technology and provided a way to package applications in a lightweight and portable container. Docker quickly became popular and was adopted by many companies.</p>
+<h2 id="The-Emergence-of-Kubernetes"><a href="#The-Emergence-of-Kubernetes" class="headerlink" title="The Emergence of Kubernetes"></a>The Emergence of Kubernetes</h2><p>As more companies started to use Docker, they realized that managing containers at scale was a challenge. This led to the development of Kubernetes, an open-source container orchestration platform. Kubernetes was designed to automate the deployment, scaling, and management of containerized applications.</p>
+<p>Kubernetes provides a way to manage and orchestrate containers across multiple hosts, making it easier to deploy and manage applications at scale. Kubernetes provides a declarative API that allows you to define the desired state of your application, and it takes care of the rest.</p>
+<h2 id="Kubernetes-Explained"><a href="#Kubernetes-Explained" class="headerlink" title="Kubernetes Explained"></a>Kubernetes Explained</h2><p>Suppose you have a web application that consists of multiple microservices. Each microservice is packaged in a Docker container and runs on a separate server. You want to deploy this application to a Kubernetes cluster and manage it using Kubernetes.</p>
+<p>First, you would create a Kubernetes deployment that defines the desired state of your application. The deployment would specify the number of replicas for each microservice, the Docker image to use, and any other configuration options.</p>
+<p>Next, you would create a Kubernetes service that exposes your application to the outside world. The service would provide a stable IP address and DNS name for your application, and it would load balance traffic across the replicas of each microservice.</p>
+<p>Once you have created the deployment and service, Kubernetes takes care of the rest. Kubernetes monitors the state of your application and ensures that the actual state matches the desired state. If a container fails, Kubernetes automatically restarts it. If a server goes down, Kubernetes automatically reschedules the containers on a different server.</p>
+<p>Kubernetes also provides a way to scale your application up or down based on demand. You can manually scale your application by updating the number of replicas in the deployment, or you can use Kubernetes’ autoscaling feature to automatically scale your application based on CPU usage, memory usage, or custom metrics.</p>
+<p>Kubernetes also provides a way to manage application updates and rollbacks. With Kubernetes, you can deploy new versions of your application without downtime. If something goes wrong, you can easily roll back to the previous version.</p>
+<h2 id="Real-Life-Solutions-with-Kubernetes"><a href="#Real-Life-Solutions-with-Kubernetes" class="headerlink" title="Real Life Solutions with Kubernetes"></a>Real Life Solutions with Kubernetes</h2><p>Kubernetes has become the de facto standard for container orchestration, and it’s used by many companies, including Airbnb, Spotify, and Lyft. These companies use Kubernetes to manage their applications at scale and provide a reliable and scalable service to their users.</p>
+<p>If you’re interested in using Kubernetes, there are many resources available to help you get started. The <a target="_blank" rel="external nofollow noopener noreferrer" href="https://kubernetes.io/docs/home/">Kubernetes documentation</a> is a great place to start, and there are many tutorials and courses available online. You can also use managed Kubernetes services like <a target="_blank" rel="external nofollow noopener noreferrer" href="https://cloud.google.com/kubernetes-engine">Google Kubernetes Engine (GKE)</a>, <a target="_blank" rel="external nofollow noopener noreferrer" href="https://aws.amazon.com/pm/eks/">Amazon Elastic Kubernetes Service (EKS)</a>, or <a target="_blank" rel="external nofollow noopener noreferrer" href="https://azure.microsoft.com/en-us/products/kubernetes-service">Microsoft Azure Kubernetes Service (AKS)</a> to make it easier to deploy and manage your applications.</p>
+<p>Containerization has come a long way since the days of shipping containers. Kubernetes has become a powerful platform that can help businesses manage their applications at scale. If you’re looking to manage your applications more efficiently, Kubernetes is definitely worth considering.</p>
+</body></html>
     
     </div>
     
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/system-design/">#system-design</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop is-hidden-mobile article-nav-prev">
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/2023/04/22/Implementing-Unique-ID-Generator/">Implementing Unique ID Generator</a>
+            
+        </span>
+    </div>
     
 </article>
 
 
+<div class="sharebox">
+    
+<div class="sharethis-inline-share-buttons"></div>
+<script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=64474d17b4717c0019327ddd&amp;product=inline-share-buttons&amp;source=platform" async="async"></script>
 
-
-    
-        <article class="article content gallery" itemscope itemprop="blogPost">
-    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
-        
-            <a href="/2023/04/22/Implementing-Unique-ID-Generator/" itemprop="url">Implementing Unique ID Generator</a>
-        
-    </h1>
-    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
-        <span class="column is-narrow">
-            
-                <time datetime="2023-04-22T06:42:52.000Z" itemprop="datePublished">Apr 22 2023</time>
-            
-        </span>
-        
-        <span class="column is-narrow article-category">
-            <i class="far fa-folder"></i>
-            <a class="article-category-link" href="/categories/system-design/">System Design</a>
-        </span>
-        
-        
-        <span class="column is-narrow">
-            
-            
-            14 minutes read (About 2082 words)
-        </span>
-        
-    </div>
-    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
-    
-        <html><head></head><body><p>A unique ID generator can be implemented using a combination of timestamp, counter, and random number. Here’s a possible implementation in Python:</p></body></html>
-        <p class="article-more-link">
-            <a href="/2023/04/22/Implementing-Unique-ID-Generator/#more">Read More</a>
-        </p>
-    
-    </div>
-    
-    
-</article>
+</div>
 
 
 
+<div class="comments">
+    <h3 class="title is-4">Comments</h3>
+    
+<script>
+    var disqus_config = function () {
+        this.page.url = 'https://blog.karthickshiva.dev/2023/04/24/from-shipping-containers-to-kubernetes-a-brief-history-of-containerization/';
+        this.page.identifier = '2023/04/24/from-shipping-containers-to-kubernetes-a-brief-history-of-containerization/';
+        
+        this.language = 'en';
+        
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'blog-karthickshiva-dev' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
 
+<div id="disqus_thread">
     
-        <article class="article content gallery" itemscope itemprop="blogPost">
-    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
-        
-            <a href="/2023/04/22/Dependency-Injection/" itemprop="url">Dependency Injection</a>
-        
-    </h1>
-    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
-        <span class="column is-narrow">
-            
-                <time datetime="2023-04-22T06:37:05.000Z" itemprop="datePublished">Apr 22 2023</time>
-            
-        </span>
-        
-        <span class="column is-narrow article-category">
-            <i class="far fa-folder"></i>
-            <a class="article-category-link" href="/categories/design-patterns/">Design Patterns</a>
-        </span>
-        
-        
-        <span class="column is-narrow">
-            
-            
-            5 minutes read (About 679 words)
-        </span>
-        
-    </div>
-    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
-    
-        <html><head></head><body><p>Dependency injection is a design pattern used in software engineering that allows objects to be created with their dependencies supplied from outside sources. In other words, instead of an object creating its dependencies itself, the dependencies are “injected” into the object from an external source.</p></body></html>
-        <p class="article-more-link">
-            <a href="/2023/04/22/Dependency-Injection/#more">Read More</a>
-        </p>
-    
-    </div>
-    
-    
-</article>
+    <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</div>
 
-
-
-
-    
-        <article class="article content gallery" itemscope itemprop="blogPost">
-    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
-        
-            <a href="/2023/04/22/Using-Threading-to-Print-Odd-and-Even-Numbers-in-Order/" itemprop="url">Using Threading to Print Odd and Even Numbers in Order</a>
-        
-    </h1>
-    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
-        <span class="column is-narrow">
-            
-                <time datetime="2023-04-22T06:01:22.000Z" itemprop="datePublished">Apr 22 2023</time>
-            
-        </span>
-        
-        <span class="column is-narrow article-category">
-            <i class="far fa-folder"></i>
-            <a class="article-category-link" href="/categories/operating-system/">Operating System</a>
-        </span>
-        
-        
-        <span class="column is-narrow">
-            
-            
-            8 minutes read (About 1255 words)
-        </span>
-        
-    </div>
-    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
-    
-        <html><head></head><body><p>In this blog post, we’ll explore how to use threading in Java to print odd and even numbers in order. Threading is a powerful technique that allows us to execute multiple threads of code concurrently, which can be useful for a wide variety of applications, including parallel processing, network programming, and more.</p></body></html>
-        <p class="article-more-link">
-            <a href="/2023/04/22/Using-Threading-to-Print-Odd-and-Even-Numbers-in-Order/#more">Read More</a>
-        </p>
-    
-    </div>
-    
-    
-</article>
-
-
-
-
-    
-        <article class="article content gallery" itemscope itemprop="blogPost">
-    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
-        
-            <a href="/2023/04/22/hello-world/" itemprop="url">Hello World</a>
-        
-    </h1>
-    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
-        <span class="column is-narrow">
-            
-                <time datetime="2023-04-22T04:30:00.000Z" itemprop="datePublished">Apr 22 2023</time>
-            
-        </span>
-        
-        <span class="column is-narrow article-category">
-            <i class="far fa-folder"></i>
-            <a class="article-category-link" href="/categories/misc/">Misc</a>
-        </span>
-        
-        
-        <span class="column is-narrow">
-            
-            
-            2 minutes read (About 261 words)
-        </span>
-        
-    </div>
-    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
-    
-        <html><head></head><body><p>Hello and welcome to my new blog! My name is Karthick Shiva and I’m a software developer with a passion for all things technical. I’ve been working in the field for several years now, and I’ve had the opportunity to work on a wide variety of subjects across different domains.</p></body></html>
-        <p class="article-more-link">
-            <a href="/2023/04/22/hello-world/#more">Read More</a>
-        </p>
-    
-    </div>
-    
-    
-</article>
-
-
-
-
-    
-    
     </div>
 </section>
     <footer class="footer">

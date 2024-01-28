@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head>
+    <meta charset="utf-8">
+<link rel="canonical" href="https://blog.karthickshiva.dev/2023/04/22/implementing-unique-id-generator/">
+<title>Implementing Unique ID Generator - Karthick Shiva</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+<meta name="description" content="Valuable insights and practical advice on a range of technical topics from a seasoned software developer.">
+
+
+
+
+
+    <meta name="description" content="A unique ID generator can be implemented using a combination of timestamp, counter, and random number. Here’s a possible implementation in Python:">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Implementing Unique ID Generator">
+<meta property="og:url" content="https://blog.karthickshiva.dev/2023/04/22/Implementing-Unique-ID-Generator/index.html">
+<meta property="og:site_name" content="Karthick Shiva">
+<meta property="og:description" content="A unique ID generator can be implemented using a combination of timestamp, counter, and random number. Here’s a possible implementation in Python:">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-04-22T06:42:52.000Z">
+<meta property="article:modified_time" content="2023-04-25T03:43:47.809Z">
+<meta property="article:author" content="Karthick Shiva">
+<meta property="article:tag" content="system-design">
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+<link rel="icon" href="/favicon.png">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/rss2.xml" title="Karthick Shiva" type="application/rss+xml">
+</head>
+<body>
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                    
+                    Karthick Shiva
+                    
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-start">
+            
+            <a class="navbar-item " href="/archives">Archives</a>
+            
+            <a class="navbar-item " href="/categories/system-design">System Design</a>
+            
+            <a class="navbar-item " href="/categories/operating-system">Operating System</a>
+            
+            <a class="navbar-item " href="/categories/technology">Technology</a>
+            
+            <a class="navbar-item " href="/about">About</a>
+            
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            <a class="navbar-item search" title="Search" href="javascript:;">
+                <i class="fas fa-search"></i>
+            </a>
+            
+            
+            
+            <a class="navbar-item" title="GitHub" target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/karthickshiva/">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+               
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            Implementing Unique ID Generator
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            
+                <time datetime="2023-04-22T06:42:52.000Z" itemprop="datePublished">Apr 22 2023</time>
+            
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/system-design/">System Design</a>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            14 minutes read (About 2082 words)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <html><head></head><body><p>A unique ID generator can be implemented using a combination of timestamp, counter, and random number. Here’s a possible implementation in Python:</p>
+<span id="more"></span>
+
+<figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> time</span><br><span class="line"><span class="hljs-keyword">import</span> random</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">class</span> <span class="title class_">IDGenerator</span>:</span><br><span class="line">    <span class="hljs-keyword">def</span> <span class="title function_">__init__</span>(<span class="hljs-params">self</span>):</span><br><span class="line">        self.counter = <span class="hljs-number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">def</span> <span class="title function_">generate_id</span>(<span class="hljs-params">self</span>):</span><br><span class="line">        timestamp = <span class="hljs-built_in">int</span>(time.time() * <span class="hljs-number">1000</span>)  <span class="hljs-comment"># Get current timestamp in milliseconds</span></span><br><span class="line">        self.counter = (self.counter + <span class="hljs-number">1</span>) % <span class="hljs-number">10000</span>  <span class="hljs-comment"># Increment counter and wrap around</span></span><br><span class="line">        random_num = random.randint(<span class="hljs-number">0</span>, <span class="hljs-number">999</span>)  <span class="hljs-comment"># Generate random number between 0 and 999</span></span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-string">f"<span class="hljs-subst">{timestamp:013d}</span><span class="hljs-subst">{self.counter:04d}</span><span class="hljs-subst">{random_num:03d}</span>"</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>In this implementation, the <code>IDGenerator</code> class has a counter initialized to zero. The <code>generate_id</code> method generates a unique ID by concatenating the current timestamp in milliseconds, a counter value that increments with each ID generation, and a random number between 0 and 999. The resulting ID is a 20-digit string in the format <code>timestamp (13 digits) + counter (4 digits) + random number (3 digits)</code>.</p>
+<p>Here’s an example of how to use the <code>IDGenerator</code> class:</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">generator = IDGenerator()</span><br><span class="line"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">10</span>):</span><br><span class="line">    <span class="hljs-built_in">print</span>(generator.generate_id())</span><br></pre></td></tr></tbody></table></figure>
+
+<p>This code creates an instance of the <code>IDGenerator</code> class and generates 10 unique IDs using the <code>generate_id</code> method. The output might look like this:</p>
+<figure class="highlight plaintext hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">162798978283100000000000</span><br><span class="line">162798978283100000000001</span><br><span class="line">162798978283100000000002</span><br><span class="line">162798978283100000000003</span><br><span class="line">162798978283100000000004</span><br><span class="line">162798978283100000000005</span><br><span class="line">162798978283100000000006</span><br><span class="line">162798978283100000000007</span><br><span class="line">162798978283100000000008</span><br><span class="line">162798978283100000000009</span><br></pre></td></tr></tbody></table></figure>
+
+<p>This implementation generates unique IDs by combining a timestamp, a counter, and a random number, which ensures that the probability of collisions is very low. <b>However, it is possible for collisions to occur if the same ID generator is used across multiple machines or if the counter wraps around too quickly.</b> To further optimize the ID generator, additional measures such as using a stronger hash function or a distributed ID generation system may be necessary.</p>
+<h2 id="Other-options"><a href="#Other-options" class="headerlink" title="Other options:"></a>Other options:</h2><p>There are several options to generate unique IDs, depending on the requirements of the application. Here are some common methods:</p>
+<ol>
+<li><p>UUID: A UUID (Universally Unique Identifier) is a 128-bit number that is guaranteed to be unique across time and space. UUIDs are generated using a combination of timestamp and random number, and can be represented as a string of hexadecimal digits.</p>
+</li>
+<li><p>Timestamp: A timestamp is a value that represents the current date and time. Timestamps can be used as unique IDs if they are combined with a counter or a random number to ensure uniqueness.</p>
+</li>
+<li><p>Counter: A counter is a value that increments with each ID generation. Counters can be used as unique IDs if they are combined with a timestamp or a random number to ensure uniqueness.</p>
+</li>
+<li><p>Hash function: A hash function can be used to generate a unique ID from a given input. Hash functions take an input of arbitrary size and produce a fixed-size output that is unique for each input value.</p>
+</li>
+<li><p>Snowflake ID: A Snowflake ID is a unique 64-bit integer that is generated using a combination of timestamp, machine ID, and sequence number. Snowflake IDs are used by distributed systems to generate unique IDs across multiple machines.</p>
+</li>
+<li><p>Custom ID: A custom ID can be generated using any combination of the above methods, or by using a custom algorithm that meets the specific requirements of the application.</p>
+</li>
+</ol>
+<p>Each of these methods has its own advantages and disadvantages, and the choice of ID generation method depends on the specific requirements of the application. For example, UUIDs are widely used because they are guaranteed to be unique, but they are relatively long and may not be suitable for some applications. On the other hand, counters are simple and efficient, but they may not be unique if multiple ID generators are used simultaneously.</p>
+<h3 id="Auto-Incremented-ID"><a href="#Auto-Incremented-ID" class="headerlink" title="Auto Incremented ID:"></a>Auto Incremented ID:</h3><p>Using auto-incremented IDs as primary keys in SQL databases is a common practice and works well in many cases. However, there are some situations where this approach may not be suitable:</p>
+<ol>
+<li><p>Scalability: If the database is expected to grow very large, auto-incremented IDs may eventually overflow the maximum value of the data type used to store them. This can cause errors and require expensive database migrations.</p>
+</li>
+<li><p>Security: Auto-incremented IDs can be predictable, which can be a security risk if they are used in URLs or other public-facing contexts. Attackers can use this predictability to guess other IDs and access sensitive data.</p>
+</li>
+<li><p>Data privacy: In some cases, auto-incremented IDs can reveal information about the data, such as the order in which it was added to the database. This can be a privacy concern if the data contains sensitive information.</p>
+</li>
+<li><p>Data integration: If data from multiple databases needs to be merged or integrated, auto-incremented IDs may not be unique across the different databases, leading to conflicts and errors.</p>
+</li>
+</ol>
+<p>For these reasons, it may be necessary to use other methods to generate unique IDs, such as UUIDs or custom ID generators. These methods can provide better scalability, security, and data privacy, and can be more suitable for distributed systems or applications with complex data integration requirements.</p>
+<h3 id="UUID"><a href="#UUID" class="headerlink" title="UUID:"></a>UUID:</h3><p>UUIDs (Universally Unique Identifiers) are widely used as unique identifiers in many applications and have several advantages, such as being guaranteed to be unique and not requiring a centralized ID generator. However, there are some situations where UUIDs may not be suitable:</p>
+<ol>
+<li><p>Size: UUIDs are relatively long, typically 32 hexadecimal digits (128 bits). This can be a problem if the IDs need to be stored in a database or transmitted over a network, as it can increase storage and bandwidth requirements.</p>
+</li>
+<li><p>Predictability: Although UUIDs are designed to be unique, they are not completely random and can be predictable in some cases. This can be a security risk if the UUIDs are used in URLs or other public-facing contexts.</p>
+</li>
+<li><p>Performance: Generating UUIDs can be computationally expensive, especially if they are generated in large batches or in a distributed system. This can affect the performance of the application and increase response times.</p>
+</li>
+<li><p>Integration: If data from multiple systems needs to be merged or integrated, UUIDs may not be unique across the different systems, leading to conflicts and errors.</p>
+</li>
+</ol>
+<p>For these reasons, it may be necessary to use other methods to generate unique IDs, such as custom ID generators or other types of UUIDs (such as ULIDs or Flake IDs) that address some of the limitations of standard UUIDs. The choice of ID generation method depends on the specific requirements of the application and the trade-offs between uniqueness, size, predictability, and performance.</p>
+<h3 id="Snowflake-ID"><a href="#Snowflake-ID" class="headerlink" title="Snowflake ID:"></a>Snowflake ID:</h3><p>Snowflake ID is a unique 64-bit integer that is generated using a combination of timestamp, machine ID, and sequence number. Snowflake IDs are used by distributed systems to generate unique IDs across multiple machines. Here’s an example of how Snowflake ID is generated:</p>
+<p>Let’s assume that we have a distributed system with multiple machines. Each machine has a unique ID, which is a 10-bit integer. The current timestamp in milliseconds is 41 bits long. The sequence number is a 12-bit integer that increments with each ID generation on the same machine.</p>
+<p>To generate a Snowflake ID, we can concatenate these three values into a 64-bit integer in the following order:</p>
+<ol>
+<li>The first 41 bits represent the current timestamp in milliseconds.</li>
+<li>The next 10 bits represent the machine ID.</li>
+<li>The last 12 bits represent the sequence number.</li>
+</ol>
+<p>Here’s an example of how a Snowflake ID might look like:</p>
+<figure class="highlight plaintext hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">110011001101001110101011110010011101001110000000000000000000000 (64 bits)</span><br></pre></td></tr></tbody></table></figure>
+
+<p>In this example, the first 41 bits represent the timestamp, which is equivalent to the value <code>1630055836000</code> in milliseconds. The next 10 bits represent the machine ID, which could be any value between 0 and 1023. The last 12 bits represent the sequence number, which could be any value between 0 and 4095.</p>
+<p>By using a combination of timestamp, machine ID, and sequence number, Snowflake IDs can be generated with a high degree of uniqueness and can be used to generate IDs across multiple machines in a distributed system.</p>
+<p>Here’s an implementation of the Snowflake method for generating unique IDs in Python:</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">class</span> <span class="title class_">SnowflakeGenerator</span>:</span><br><span class="line">    <span class="hljs-keyword">def</span> <span class="title function_">__init__</span>(<span class="hljs-params">self, datacenter_id, worker_id</span>):</span><br><span class="line">        self.twepoch = <span class="hljs-number">1288834974657</span></span><br><span class="line">        self.datacenter_id = datacenter_id</span><br><span class="line">        self.worker_id = worker_id</span><br><span class="line">        self.sequence = <span class="hljs-number">0</span></span><br><span class="line">        self.sequence_bits = <span class="hljs-number">12</span></span><br><span class="line">        self.worker_id_bits = <span class="hljs-number">5</span></span><br><span class="line">        self.datacenter_id_bits = <span class="hljs-number">5</span></span><br><span class="line">        self.max_worker_id = -<span class="hljs-number">1</span> ^ (-<span class="hljs-number">1</span> &lt;&lt; self.worker_id_bits)</span><br><span class="line">        self.max_datacenter_id = -<span class="hljs-number">1</span> ^ (-<span class="hljs-number">1</span> &lt;&lt; self.datacenter_id_bits)</span><br><span class="line">        self.sequence_mask = -<span class="hljs-number">1</span> ^ (-<span class="hljs-number">1</span> &lt;&lt; self.sequence_bits)</span><br><span class="line">        self.worker_id_shift = self.sequence_bits</span><br><span class="line">        self.datacenter_id_shift = self.sequence_bits + self.worker_id_bits</span><br><span class="line">        self.timestamp_shift = self.sequence_bits + self.worker_id_bits + self.datacenter_id_bits</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">def</span> <span class="title function_">_generate_timestamp</span>(<span class="hljs-params">self</span>):</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-built_in">int</span>(time.time() * <span class="hljs-number">1000</span> - self.twepoch)</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">def</span> <span class="title function_">_next_sequence</span>(<span class="hljs-params">self</span>):</span><br><span class="line">        self.sequence = (self.sequence + <span class="hljs-number">1</span>) &amp; self.sequence_mask</span><br><span class="line">        <span class="hljs-keyword">if</span> self.sequence == <span class="hljs-number">0</span>:</span><br><span class="line">            <span class="hljs-keyword">raise</span> Exception(<span class="hljs-string">"Sequence overflow"</span>)</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">def</span> <span class="title function_">generate_id</span>(<span class="hljs-params">self</span>):</span><br><span class="line">        timestamp = self._generate_timestamp()</span><br><span class="line">        <span class="hljs-keyword">if</span> timestamp &lt; self.last_timestamp:</span><br><span class="line">            <span class="hljs-keyword">raise</span> Exception(<span class="hljs-string">"Clock moved backwards"</span>)</span><br><span class="line">        <span class="hljs-keyword">if</span> timestamp == self.last_timestamp:</span><br><span class="line">            self._next_sequence()</span><br><span class="line">        <span class="hljs-keyword">else</span>:</span><br><span class="line">            self.sequence = <span class="hljs-number">0</span></span><br><span class="line">        self.last_timestamp = timestamp</span><br><span class="line">        <span class="hljs-keyword">return</span> ((timestamp &lt;&lt; self.timestamp_shift) |</span><br><span class="line">                (self.datacenter_id &lt;&lt; self.datacenter_id_shift) |</span><br><span class="line">                (self.worker_id &lt;&lt; self.worker_id_shift) |</span><br><span class="line">                self.sequence)</span><br></pre></td></tr></tbody></table></figure>
+
+<p>Here’s how you can use this class to generate unique IDs:</p>
+<figure class="highlight python hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">generator = SnowflakeGenerator(datacenter_id=<span class="hljs-number">1</span>, worker_id=<span class="hljs-number">1</span>)</span><br><span class="line">unique_id = generator.generate_id()</span><br><span class="line"><span class="hljs-built_in">print</span>(unique_id)</span><br></pre></td></tr></tbody></table></figure>
+
+<p>This will output a unique ID that is generated using the Snowflake method. You can change the <code>datacenter_id</code> and <code>worker_id</code> values to generate IDs that are unique to your specific environment.</p>
+<p>The code is an implementation of the Snowflake method for generating unique IDs in Python.</p>
+<p>The <code>SnowflakeGenerator</code> class has the following attributes:</p>
+<ul>
+<li><code>twepoch</code>: This is the timestamp of the Snowflake epoch, which is January 1, 2010 in milliseconds. It is used to calculate the timestamp portion of the generated ID.</li>
+<li><code>datacenter_id</code>: This is a unique identifier for the datacenter that the ID is being generated in.</li>
+<li><code>worker_id</code>: This is a unique identifier for the worker that is generating the ID.</li>
+<li><code>sequence</code>: This is a counter that is used to ensure that IDs generated within the same millisecond are unique.</li>
+<li><code>sequence_bits</code>: This is the number of bits used to represent the sequence number.</li>
+<li><code>worker_id_bits</code>: This is the number of bits used to represent the worker ID.</li>
+<li><code>datacenter_id_bits</code>: This is the number of bits used to represent the datacenter ID.</li>
+<li><code>max_worker_id</code>: This is the maximum value that the worker ID can be.</li>
+<li><code>max_datacenter_id</code>: This is the maximum value that the datacenter ID can be.</li>
+<li><code>sequence_mask</code>: This is a bitmask that is used to extract the sequence number from the generated ID.</li>
+<li><code>worker_id_shift</code>: This is the number of bits to shift the worker ID to the left before combining it with the other parts of the ID.</li>
+<li><code>datacenter_id_shift</code>: This is the number of bits to shift the datacenter ID to the left before combining it with the other parts of the ID.</li>
+<li><code>timestamp_shift</code>: This is the number of bits to shift the timestamp to the left before combining it with the other parts of the ID.</li>
+</ul>
+<p>The <code>SnowflakeGenerator</code> class has the following methods:</p>
+<ul>
+<li><code>_generate_timestamp()</code>: This method generates the timestamp portion of the ID by subtracting the Snowflake epoch from the current time in milliseconds.</li>
+<li><code>_next_sequence()</code>: This method increments the sequence number and handles sequence number overflow.</li>
+<li><code>generate_id()</code>: This method generates a unique ID using the Snowflake method. It combines the timestamp, datacenter ID, worker ID, and sequence number to create a 64-bit ID.</li>
+</ul>
+<p>To use the <code>SnowflakeGenerator</code> class, you can create an instance of the class with a unique datacenter ID and worker ID, and then call the <code>generate_id()</code> method to generate a new ID. The generated ID will be unique to your specific environment.</p>
+<h4 id="Note"><a href="#Note" class="headerlink" title="Note:"></a>Note:</h4><p>The Snowflake method was originally developed by Twitter to generate unique IDs for their distributed systems. They chose January 1, 2010 as the epoch for their implementation of the Snowflake method because it was a recent date at the time and it allowed for a larger range of timestamps than if they had chosen an earlier epoch.</p>
+<p>In the Snowflake method, the timestamp portion of the ID is calculated by subtracting the epoch time from the current time in milliseconds. By choosing a more recent epoch time, the timestamp portion of the ID can be represented using fewer bits, which allows for a larger range of timestamps to be represented in the ID.</p>
+<p>It’s worth noting that the choice of epoch time is somewhat arbitrary and can be adjusted to suit the needs of a particular system. However, it’s important to choose an epoch time that allows for a sufficient range of timestamps to be represented in the ID, while also ensuring that the timestamp portion of the ID doesn’t take up too many bits and reduce the number of bits available for other parts of the ID (such as the worker ID and sequence number).</p>
+</body></html>
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/system-design/">#system-design</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/2023/04/24/from-shipping-containers-to-kubernetes-a-brief-history-of-containerization/">From Shipping Containers to Kubernetes: A Brief History of Containerization</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/2023/04/22/Dependency-Injection/">Dependency Injection</a>
+            
+        </span>
+    </div>
+    
+</article>
+
+
+<div class="sharebox">
+    
+<div class="sharethis-inline-share-buttons"></div>
+<script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=64474d17b4717c0019327ddd&amp;product=inline-share-buttons&amp;source=platform" async="async"></script>
+
+</div>
+
+
+
+<div class="comments">
+    <h3 class="title is-4">Comments</h3>
+    
+<script>
+    var disqus_config = function () {
+        this.page.url = 'https://blog.karthickshiva.dev/2023/04/22/Implementing-Unique-ID-Generator/';
+        this.page.identifier = '2023/04/22/Implementing-Unique-ID-Generator/';
+        
+        this.language = 'en';
+        
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'blog-karthickshiva-dev' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</div>
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2023 Karthick Shiva&nbsp;
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            <div class="column is-narrow">
+                <div class="columns is-mobile is-multiline is-centered">
+                
+                    
+                <a class="column is-narrow has-text-black" title="GitHub" target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/karthickshiva/">
+                    
+                    GitHub
+                    
+                </a>
+                
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</footer>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" target="_blank" rel="external nofollow noopener noreferrer" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("en-AU");
+</script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+</script>
+
+    
+    
+    
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            if (typeof($.fn.lightGallery) === 'function') {
+                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof($.fn.justifiedGallery) === 'function') {
+                $('.justified-gallery > p > .gallery-item').unwrap();
+                $('.justified-gallery').justifiedGallery();
+            }
+        });
+    })(jQuery);
+</script>
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <style>
+        .hljs {
+            position: relative;
+        }
+
+        .hljs .clipboard-btn {
+            float: right;
+            color: #9a9a9a;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hljs .clipboard-btn:hover {
+          color: #8a8a8a;
+        }
+
+        .hljs > .clipboard-btn {
+            display: none;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+        .hljs:hover > .clipboard-btn {
+            display: inline;
+        }
+
+        .hljs > figcaption > .clipboard-btn {
+            margin-right: 4px;
+        }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('figure.hljs').each(function(i, figure) {
+          var codeId = 'code-' + i;
+          var code = figure.querySelector('.code');
+          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
+          code.id = codeId;
+          copyButton.addClass('clipboard-btn');
+          copyButton.attr('data-clipboard-target-id', codeId);
+
+          var figcaption = figure.querySelector('figcaption');
+
+          if (figcaption) {
+            figcaption.append(copyButton[0]);
+          } else {
+            figure.prepend(copyButton[0]);
+          }
+        })
+
+        var clipboard = new ClipboardJS('.clipboard-btn', {
+          target: function(trigger) {
+            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+          }
+        });
+        clipboard.on('success', function(e) {
+          e.clearSelection();
+        })
+      })
+    </script>
+
+    
+    
+
+    
+
+
+
+<script src="/js/script.js"></script>
+
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+    
+</body>
+</html>
