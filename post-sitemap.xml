@@ -9,40 +9,16 @@
 
 
     <url>
-        <loc>https://blog.karthickshiva.dev/2023/04/22/Implementing-Unique-ID-Generator/</loc>
-        <lastmod>2024-02-03T06:37:09.619Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://blog.karthickshiva.dev/2023/04/22/Using-Threading-to-Print-Odd-and-Even-Numbers-in-Order/</loc>
-        <lastmod>2024-02-03T06:37:09.619Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://blog.karthickshiva.dev/2023/04/24/from-shipping-containers-to-kubernetes-a-brief-history-of-containerization/</loc>
-        <lastmod>2024-02-03T06:37:09.619Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://blog.karthickshiva.dev/2023/04/22/hello-world/</loc>
-        <lastmod>2024-02-03T06:37:09.619Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://blog.karthickshiva.dev/2024/02/02/stock-market-basics/</loc>
-        <lastmod>2024-02-03T06:37:09.619Z</lastmod>
+        <lastmod>2024-02-03T12:50:32.815Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://blog.karthickshiva.dev/2024/02/03/stock-valuation-methods/</loc>
+        <lastmod>2024-02-03T12:50:32.815Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -50,7 +26,7 @@
 
     <url>
         <loc>https://blog.karthickshiva.dev/2024/01/28/unleashing-the-cloud-a-historical-odyssey-of-cloud-storage/</loc>
-        <lastmod>2024-02-03T06:37:09.619Z</lastmod>
+        <lastmod>2024-02-03T12:50:32.815Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -58,7 +34,7 @@
 
     <url>
         <loc>https://blog.karthickshiva.dev/2023/05/06/welzl-s-algorithm/</loc>
-        <lastmod>2024-02-03T06:37:09.619Z</lastmod>
+        <lastmod>2024-02-03T12:50:32.815Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -66,7 +42,39 @@
 
     <url>
         <loc>https://blog.karthickshiva.dev/2023/04/22/Dependency-Injection/</loc>
-        <lastmod>2024-02-03T06:37:09.615Z</lastmod>
+        <lastmod>2024-02-03T12:50:32.811Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://blog.karthickshiva.dev/2023/04/22/Implementing-Unique-ID-Generator/</loc>
+        <lastmod>2024-02-03T12:50:32.811Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://blog.karthickshiva.dev/2023/04/24/from-shipping-containers-to-kubernetes-a-brief-history-of-containerization/</loc>
+        <lastmod>2024-02-03T12:50:32.811Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://blog.karthickshiva.dev/2023/04/22/Using-Threading-to-Print-Odd-and-Even-Numbers-in-Order/</loc>
+        <lastmod>2024-02-03T12:50:32.811Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://blog.karthickshiva.dev/2023/04/22/hello-world/</loc>
+        <lastmod>2024-02-03T12:50:32.811Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
