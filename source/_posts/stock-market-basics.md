@@ -1,9 +1,9 @@
 ---
 title: "Stock Market 101: Understanding the Basics for New Investors"
 date: 2024-02-02 20:28:40
-tags: misc
+tags: trading
 categories:
-  - Misc
+  - Trading
 ---
 <center>
     <img src="https://i.ibb.co/3rxc5J3/2199d24c-fbd0-42ff-8500-c948128d27b4.jpg" alt="Stock market" border="0" width="400px">
