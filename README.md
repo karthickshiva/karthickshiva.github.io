@@ -7,3 +7,5 @@ I created this blog to share my knowledge and insights on various programming to
 I believe that technology is constantly evolving, and it’s important to stay informed and adapt to new changes in order to succeed in this field. Through this blog, I hope to inspire and motivate others to pursue their passion for programming and embrace the endless possibilities that technology has to offer.
 
 Thank you for visiting my blog, and I hope you find the content informative and helpful. If you have any questions or suggestions for future topics, please feel free to reach out to me.
+
+Visit my blog: <a href="https://blog.karthickshiva.dev">blog.karthickshiva.dev</a>
