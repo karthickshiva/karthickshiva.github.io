@@ -1,5 +1,5 @@
 ---
-title: "Stock Market 102: Stock Valuation Methods"
+title: "Stock Market 101: Stock Valuation Methods"
 date: 2024-02-03 17:55:40
 tags: trading
 categories:
