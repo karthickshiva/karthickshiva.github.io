@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Every major lab ships a model, immediately publishes a chart where their model wins, and calls it progress. I'm done buying it.">
+  <title>Benchmarks Are Broken and We're All Pretending Otherwise — blog.karthickshiva.dev</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <a href="/" class="site-title">Signals &amp; Systems<span> — blog.karthickshiva.dev</span></a>
+      <nav>
+        <a href="/">posts</a>
+        <a href="/about.html">about</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <article>
+        <div class="post-header">
+          <div class="post-header-meta">
+            <span class="post-date">2026-03-12</span>
+            <span class="post-tag">AI</span>
+          </div>
+          <h1>Benchmarks Are Broken and We're All Pretending Otherwise</h1>
+        </div>
+
+        <div class="post-content">
+          <p>
+            I've been building and evaluating AI systems professionally for years now, and I want to say something
+            that the industry keeps dancing around: <strong>the benchmark leaderboard is a performance, not a measurement.</strong>
+            Every major lab ships a model, immediately publishes a chart where their model wins,
+            and calls it scientific progress. I'm done buying it.
+          </p>
+
+          <h2>The contamination problem is not a minor footnote</h2>
+          <p>
+            When a model is trained on data scraped from the internet, and the benchmark dataset
+            also lives on the internet, you don't have evaluation — you have memorisation with extra steps.
+            The labs know this. The researchers know this. The papers say "we took steps to mitigate
+            contamination" and then we all nod and move on. This is not rigorous. This is not science.
+            This is a press release wearing a t-shirt with equations on it.
+          </p>
+          <p>
+            MMLU was published in 2020. By 2023 it was effectively saturated. By 2024 it was
+            being used to rank models that had almost certainly seen it during training.
+            The response from the field was to publish MMLU-Pro and MMLU-Redux and keep the
+            same fundamental carousel going. The problem isn't the specific benchmark — it's
+            the incentive structure that turns any benchmark into a target the moment it matters.
+          </p>
+
+          <h2>Benchmark leaderboards select for benchmark performance</h2>
+          <p>
+            This sounds obvious but the implications are rarely followed to their logical conclusion.
+            If a lab optimises hard on HumanEval, they get a model that is very good at the
+            specific style of Python problems in HumanEval. That model may be worse on the
+            actual Python you write at work — the kind with messy context, implicit requirements,
+            and a codebase that predates type annotations.
+          </p>
+          <p>
+            I've experienced this firsthand. I've had production bugs that a top-of-leaderboard
+            model confidently got wrong while a mid-tier model stumbled toward the right answer.
+            The difference wasn't capability — it was that my problem didn't look like the
+            training distribution for the benchmark. Capability is distribution-relative.
+            That's the whole point of generalisation, and it's what the leaderboard doesn't measure.
+          </p>
+
+          <h2>The eval that actually matters is yours</h2>
+          <p>
+            I've started building private eval sets for every serious project I work on.
+            Not public benchmarks. Not someone else's test suite. Mine. Problems that look
+            exactly like my distribution: my edge cases, my failure modes, my tolerance for
+            hallucination in this specific context. It takes time to build. It's the most
+            valuable engineering work I do.
+          </p>
+          <p>
+            The dirty secret is that this is what the labs do too — they have internal evals
+            that they never publish because the moment you publish a benchmark it starts dying.
+            They cherry-pick the public ones that make their model look good. This isn't
+            conspiracy; it's rational behaviour given the incentive structure. The solution
+            is to stop treating public leaderboards as ground truth and build your own signal.
+          </p>
+
+          <h2>What I actually trust</h2>
+          <p>
+            I trust published case studies from teams who deployed a specific model on a specific
+            task and measured real outcomes — latency, error rate, user preference, cost.
+            I trust ablations where a researcher ran the same task with and without a
+            component and showed the delta. I trust my own evals on my own data.
+          </p>
+          <p>
+            I do not trust any chart that puts "our model" in the top right corner,
+            published the same week the model shipped, on a benchmark that didn't exist
+            six months ago. That's not a claim about AI capability.
+            That's a fundraising document wearing a lab coat.
+          </p>
+        </div>
+
+        <div class="post-footer">
+          <a href="/" class="back-link">← back to posts</a>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>blog.karthickshiva.dev</p>
+      <p>built with html &amp; css. no frameworks.</p>
+    </div>
+  </footer>
+</body>
+</html>

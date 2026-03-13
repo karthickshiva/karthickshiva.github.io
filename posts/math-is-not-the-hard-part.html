@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Every engineer I've met who 'can't do math' actually can. What they can't do is sit with confusion long enough for it to resolve. That's a different problem entirely.">
+  <title>Math Is Not the Hard Part — blog.karthickshiva.dev</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <a href="/" class="site-title">Signals &amp; Systems<span> — blog.karthickshiva.dev</span></a>
+      <nav>
+        <a href="/">posts</a>
+        <a href="/about.html">about</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <article>
+        <div class="post-header">
+          <div class="post-header-meta">
+            <span class="post-date">2026-02-22</span>
+            <span class="post-tag">mathematics</span>
+          </div>
+          <h1>Math Is Not the Hard Part</h1>
+        </div>
+
+        <div class="post-content">
+          <p>
+            I hear some version of this constantly: "I'm not really a math person."
+            Usually from someone who just debugged a non-trivial distributed systems race condition,
+            or wrote a parser for an ambiguous grammar, or designed a caching strategy that shaved
+            40% off latency. That's all math. They did it. They just don't call it that.
+          </p>
+          <p>
+            The "I can't do math" story is, I think, almost always a cover story for something else.
+            The real thing is much more specific and much more fixable: people can't tolerate
+            the feeling of not understanding something yet. That's not a math problem. That's a
+            relationship with uncertainty. And it's the actual bottleneck.
+          </p>
+
+          <h2>What mathematics actually requires</h2>
+          <p>
+            When I was learning measure theory — which is the foundation of probability that
+            most ML practitioners have never seen — I spent three days on a single definition.
+            Not three days on the chapter. Three days on one definition: the sigma-algebra.
+            I read it. I thought I understood it. I wrote it out. I thought I understood it again.
+            Then I tried to use it and discovered I had understood the words but not the thing.
+          </p>
+          <p>
+            This is completely normal in mathematics. It is not a sign you're not a math person.
+            It's just how the subject works. The concepts are dense and load-bearing; you can't
+            skim the foundations and expect the upper floors to be stable. The people who are
+            "good at math" are mostly just people who have made peace with this cycle of
+            false-understanding and re-understanding. They don't find it embarrassing anymore.
+          </p>
+
+          <h2>The ML education gap</h2>
+          <p>
+            The standard ML education path now is: watch fast.ai, read the Karpathy blog,
+            clone a repo, change the learning rate, call yourself an ML engineer. I don't
+            mean that dismissively — those resources are genuinely excellent and they get
+            people building quickly, which matters.
+          </p>
+          <p>
+            But there's a ceiling. It shows up the first time you need to debug a training
+            instability that isn't just "lower the learning rate." It shows up when you're
+            reading a paper and the contribution is buried in a Jacobian you can't parse.
+            It shows up when you're trying to understand why your model generalises badly
+            and the explanation requires something from statistical learning theory that you
+            never touched.
+          </p>
+          <p>
+            The ceiling isn't that the math is too hard. It's that nobody built the patience
+            muscle during the fast track. The fast track optimises for shipping, which is
+            correct for the first year. But patience with confusion is a skill, and it
+            atrophies if you always have a shortcut.
+          </p>
+
+          <h2>How I actually got better at mathematics</h2>
+          <p>
+            I gave myself permission to be confused for longer before looking something up.
+            Not indefinitely — I'm not a monk. But I started sitting with a definition or
+            a proof step for twenty minutes instead of three before reaching for an explanation.
+            That interval is where understanding actually forms. Looking up the answer at minute
+            four just deposits the result without building the circuit.
+          </p>
+          <p>
+            I also stopped reading mathematics for coverage and started reading for depth.
+            One real proof per session, understood completely, is worth more than twenty
+            theorems skimmed. The goal is not to have encountered something. The goal
+            is to be able to reconstruct it from first principles at 3am when you need it.
+          </p>
+
+          <h2>The thing I want to say</h2>
+          <p>
+            If you work in AI and you've written off the mathematical side of it —
+            the linear algebra, the probability theory, the optimisation — I genuinely
+            believe you're shortchanging yourself. Not because the math makes you look smart.
+            Because it changes what you see when you look at a model.
+          </p>
+          <p>
+            Attention is just a soft dictionary lookup — that's a useful metaphor.
+            But knowing that it's actually a parameterised inner product followed by a
+            softmax normalisation, and understanding what that means for gradient flow
+            and the geometry of the representation space — that's a different level of
+            understanding entirely. One of them lets you use the tool. The other lets you
+            know when the tool is the wrong one.
+          </p>
+          <p>
+            Math is not the hard part. The hard part is deciding you're the kind of person
+            who does it. Once that's settled, the rest is just time and a reasonable
+            tolerance for feeling stupid temporarily.
+          </p>
+        </div>
+
+        <div class="post-footer">
+          <a href="/" class="back-link">← back to posts</a>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>blog.karthickshiva.dev</p>
+      <p>built with html &amp; css. no frameworks.</p>
+    </div>
+  </footer>
+</body>
+</html>

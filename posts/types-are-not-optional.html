@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="I've worked in Python codebases that should be indicted. Strong static types aren't a preference — they're the difference between a system and a pile of guesses.">
+  <title>Types Are Not Optional: A Rant in Defence of Static Typing — blog.karthickshiva.dev</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <a href="/" class="site-title">Signals &amp; Systems<span> — blog.karthickshiva.dev</span></a>
+      <nav>
+        <a href="/">posts</a>
+        <a href="/about.html">about</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <article>
+        <div class="post-header">
+          <div class="post-header-meta">
+            <span class="post-date">2026-03-05</span>
+            <span class="post-tag">engineering</span>
+          </div>
+          <h1>Types Are Not Optional: A Rant in Defence of Static Typing</h1>
+        </div>
+
+        <div class="post-content">
+          <p>
+            I have a strong opinion about this and I'm going to state it plainly:
+            writing production software without a static type system is an act of
+            aggression against the people who have to maintain it after you leave.
+            I've spent too many hours reading Python that returns <code>Optional[Union[str, int, None]]</code>
+            from a function named <code>get_result()</code> to pretend otherwise.
+          </p>
+
+          <h2>Dynamic typing is not freedom — it's deferred debt</h2>
+          <p>
+            The argument for dynamic languages is always velocity: you ship faster when you
+            don't have to declare types. I believed this for longer than I should have.
+            It's true in the first two weeks of a project. It becomes false somewhere around
+            the first time you refactor a core abstraction and realise you have no idea
+            what's calling it or what it expects back.
+          </p>
+          <p>
+            Static types are documentation that can't go stale. They're contracts that the
+            compiler enforces so you don't have to. Every <code>dict</code> parameter you
+            accept instead of a typed dataclass is a small act of cowardice — you're pushing
+            the verification work to runtime, where it fails at 2am in production instead of
+            at your desk at 2pm during development.
+          </p>
+
+          <h2>The ML ecosystem is the worst offender</h2>
+          <p>
+            The codebase I see most frequently is ML research code that turned into production ML code
+            without ever being cleaned up. Tensors of unknown shape. Functions that accept either a
+            batch or a single sample but the distinction is handled by a try/except inside.
+            A training loop where the loss variable is reassigned four times in the same scope
+            and you genuinely cannot tell which value is logged.
+          </p>
+          <p>
+            PyTorch, to its credit, has gotten substantially better at typed interfaces.
+            JAX has <code>jaxtyping</code>. The ecosystem is catching up. But the culture
+            hasn't — there's still a strong association between "I'm a researcher" and
+            "I write untyped Python," as if rigour is the enemy of creativity.
+            It isn't. Sloppy types are the enemy of <em>other people's</em> creativity,
+            because they burn their time just understanding your code instead of building on it.
+          </p>
+
+          <h2>Go did this right</h2>
+          <p>
+            Go is not a beautiful language. It doesn't have the elegance of Haskell
+            or the expressiveness of Rust. But it has something worth more for most production
+            systems: it's almost impossible to write Go that someone else can't read in
+            ten minutes. The type system is simple and present everywhere.
+            You always know what a function takes and returns.
+            Interfaces are structural and explicit. It's not magic — it's engineering.
+          </p>
+          <p>
+            I've maintained Go services for three years after writing them.
+            I've never once had to spend an hour rediscovering what a function returns.
+            That's the dividend of boring, explicit types. It compounds.
+          </p>
+
+          <h2>What I actually do</h2>
+          <p>
+            For Python I use <code>mypy</code> in strict mode from day one and I make it
+            a CI gate. I don't merge code that doesn't type-check. This is not popular.
+            People complain that <code>mypy</code> is slow and annoying and sometimes wrong.
+            All true. It's still better than the alternative. I use <code>pydantic</code>
+            for all data boundaries — anything that crosses a function signature that I don't
+            fully control gets validated at the boundary. Internally I use dataclasses with
+            type annotations everywhere.
+          </p>
+          <p>
+            For new services, I reach for Go unless there's a specific reason not to.
+            For ML, I type the training loop strictly and leave the research scratch area
+            loose — but I enforce that the boundary between them is typed and tested.
+          </p>
+          <p>
+            Types won't make you a better thinker. But they will make your thinking visible,
+            and visible thinking is what separates code you can build on from code that
+            slowly suffocates the people who inherit it.
+          </p>
+        </div>
+
+        <div class="post-footer">
+          <a href="/" class="back-link">← back to posts</a>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>blog.karthickshiva.dev</p>
+      <p>built with html &amp; css. no frameworks.</p>
+    </div>
+  </footer>
+</body>
+</html>
