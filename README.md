@@ -1,142 +1,122 @@
-# karthickshiva.dev — Blog
+# Signals & Systems
 
-A minimal, no-framework blog. Pure HTML and CSS. No build step, no Node.js.
+Minimal developer blog for [blog.karthickshiva.dev](https://blog.karthickshiva.dev).
 
-Live at: [blog.karthickshiva.dev](https://blog.karthickshiva.dev)
-
----
+The public site stays static HTML, but the publishing flow is now generated from source posts so the design, feed, sitemap, and SEO tags do not drift out of sync.
 
 ## Structure
 
-```
+```text
 .
-├── index.html          # Homepage — post list
-├── about.html          # About page
-├── new-post            # CLI: create a post
-├── publish             # CLI: publish a created post
-├── CNAME               # Custom domain for GitHub Pages
-├── css/
-│   └── style.css       # All styles
-└── posts/
-    └── my-post.html    # One file per post
+├── about.html              # Hand-authored about page
+├── build-site              # CLI: regenerate the public site
+├── content/
+│   ├── drafts/             # Unpublished source posts
+│   └── posts/              # Published source posts
+├── css/style.css           # Shared visual system
+├── feed.xml                # Generated RSS feed
+├── index.html              # Generated homepage
+├── new-post                # CLI: create a draft
+├── posts/                  # Generated public post pages
+├── publish                 # CLI: publish a draft or republish an edit
+├── robots.txt              # Generated robots file
+├── scripts/blog_tools.py   # Build + publish automation
+└── sitemap.xml             # Generated sitemap
 ```
 
-No build tools. GitHub Pages serves the static files directly from `main`.
+## Publishing flow
 
----
-
-## Workflow
-
-Creating and publishing are intentionally separate steps.
-
-### Step 1 — Create
+### 1. Create a draft
 
 ```bash
 ./new-post "My Post Title"
 ```
 
-This will:
-1. Prompt you for a one-line summary (or pass `--desc`)
-2. Create `posts/my-post-title.html` pre-filled with the post template
-3. Update `index.html` with the new entry
-4. Open the file in `$EDITOR` so you can write the content
+This creates `content/drafts/my-post-title.html`, prompts for the summary and keywords if needed, and opens the draft in `$EDITOR`.
 
-The post stays local until you explicitly publish it.
+Available flags:
 
-### Step 2 — Write
+```bash
+./new-post "Title" \
+  --tag engineering \
+  --desc "Search snippet and homepage summary." \
+  --keywords "developer tooling, static sites, seo" \
+  --date 2026-03-14 \
+  --no-edit
+```
 
-Edit `posts/<slug>.html`. Replace everything inside `<div class="post-content">` with your post. Available elements:
+### 2. Write the post body
+
+Each source file begins with metadata:
 
 ```html
-<p>Paragraph text.</p>
+<!--
+title: My Post Title
+description: Search-friendly summary.
+date: 2026-03-14
+tag: engineering
+keywords: developer tooling, static sites, seo
+-->
+```
+
+Everything after that block is the post body HTML. Write normal semantic HTML:
+
+```html
+<p>Opening argument.</p>
 <h2>Section heading</h2>
-<h3>Sub-heading</h3>
-<ul><li>List item</li></ul>
-<strong>Bold</strong>
-<code>inline code</code>
-<pre><code>// fenced code block</code></pre>
-<blockquote>Pull quote.</blockquote>
-<a href="https://...">Link</a>
+<p>More detail.</p>
+<pre><code>const value = true;</code></pre>
+<blockquote>A pull quote.</blockquote>
 ```
 
-### Step 3 — Publish
-
-When ready:
+### 3. Build locally
 
 ```bash
-./publish                    # shows unpublished posts, prompts to pick
-./publish my-post-title      # publish directly by slug
+./build-site
 ```
 
-This does `git add`, `git commit`, and `git push` in one step.
+This regenerates:
 
----
+- `index.html`
+- `posts/*.html`
+- `feed.xml`
+- `sitemap.xml`
+- `robots.txt`
 
-### `new-post` options
+It also runs lightweight SEO checks, including description length, keyword coverage, and placeholder-copy detection.
+
+### 4. Publish
 
 ```bash
-./new-post "Title" [--tag TAG] [--desc "Summary"] [--date YYYY-MM-DD] [--no-edit]
+./publish my-post-title
 ```
 
-| Flag | Default | Description |
-|---|---|---|
-| `--tag` | `tech` | Category label shown on the index |
-| `--desc` | prompted | One-line summary shown on the index page |
-| `--date` | today | Post date as `YYYY-MM-DD` |
-| `--no-edit` | off | Skip opening the file in `$EDITOR` |
+If the slug points to a draft, `publish` moves it from `content/drafts` to `content/posts`, rebuilds the site, stages the generated artifacts, commits, and pushes.
+
+Without an argument:
 
 ```bash
-# Create with all details upfront, skip editor for now
-./new-post "DeepSeek R2 and the Open-Source Shift" \
-  --tag tech \
-  --desc "DeepSeek's R2 model challenges the closed-source incumbents." \
-  --no-edit
-
-# Backdate a post
-./new-post "Retrospective: 2025 in Review" --date 2025-12-31 --tag tech
+./publish
 ```
 
-### `publish` options
+The command lists drafts and modified published source posts, then prompts for a selection.
 
-```bash
-./publish                        # interactive — lists unpublished posts
-./publish my-post-slug           # by slug
-./publish posts/my-post.html     # by file path
-```
+## SEO automation
 
----
+Post metadata is the single source of truth for SEO. The build step generates:
 
-## Styling
+- canonical URLs
+- meta descriptions
+- Open Graph tags
+- Twitter summary tags
+- JSON-LD `Blog` / `BlogPosting` schema
+- RSS entries
+- sitemap URLs and `lastmod`
+- `robots.txt` sitemap reference
 
-All colours are CSS custom properties in `css/style.css`:
+This avoids the previous manual flow where post pages, the homepage JSON-LD, `feed.xml`, and `sitemap.xml` could diverge.
 
-```css
-:root {
-  --bg: #0f0f0f;          /* page background */
-  --bg-surface: #161616;  /* code block background */
-  --border: #2a2a2a;      /* dividers */
-  --text: #e0e0e0;        /* body text */
-  --text-muted: #777;     /* dates, nav links */
-  --accent: #00d4aa;      /* links, tags, highlights */
-}
-```
+## Notes
 
-Change `--accent` to retheme the entire site in one edit.
-
----
-
-## GitHub Pages setup
-
-1. **Settings → Pages → Source**: `Deploy from a branch`
-2. **Branch**: `main`, folder `/` (root)
-3. **Custom domain**: `blog.karthickshiva.dev` — the `CNAME` file handles DNS
-
----
-
-## Design decisions
-
-- No JavaScript — works with JS disabled
-- No external fonts — system font stack, instant load
-- No analytics or tracking
-- Single CSS file — easy to audit and override
-- Dark theme only — tweak `--bg` / `--text` vars for light mode
+- The generated site remains framework-free and deploys directly from the repo root on GitHub Pages.
+- The `posts/` directory is build output. Edit source posts in `content/posts/` or `content/drafts/` instead.

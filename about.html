@@ -3,87 +3,112 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="About Karthick Shiva — engineer, AI practitioner, mathematician, and music theorist. Building intelligent systems grounded in first principles.">
+  <meta name="description" content="About Karthick Shiva — engineer working across AI systems, software architecture, and the mathematics that keeps both honest.">
   <meta name="author" content="Karthick Shiva">
-  <title>About — Karthick Shiva</title>
-
+  <meta name="robots" content="index,follow">
+  <title>About | Signals &amp; Systems</title>
   <link rel="canonical" href="https://blog.karthickshiva.dev/about.html">
   <link rel="alternate" type="application/rss+xml" title="Signals &amp; Systems" href="https://blog.karthickshiva.dev/feed.xml">
-  <link rel="stylesheet" href="css/style.css">
-
-  <!-- Open Graph -->
+  <link rel="stylesheet" href="/css/style.css">
   <meta property="og:type" content="profile">
   <meta property="og:site_name" content="Signals &amp; Systems">
-  <meta property="og:title" content="About — Karthick Shiva">
-  <meta property="og:description" content="Engineer, AI practitioner, mathematician, and music theorist. Building intelligent systems grounded in first principles.">
+  <meta property="og:title" content="About | Signals &amp; Systems">
+  <meta property="og:description" content="Engineer working across AI systems, software architecture, and the mathematics that keeps both honest.">
   <meta property="og:url" content="https://blog.karthickshiva.dev/about.html">
-  <meta property="profile:first_name" content="Karthick">
-  <meta property="profile:last_name" content="Shiva">
-
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="About — Karthick Shiva">
-  <meta name="twitter:description" content="Engineer, AI practitioner, mathematician, and music theorist. Building intelligent systems grounded in first principles.">
-
-  <!-- JSON-LD -->
+  <meta name="twitter:title" content="About | Signals &amp; Systems">
+  <meta name="twitter:description" content="Engineer working across AI systems, software architecture, and the mathematics that keeps both honest.">
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Karthick Shiva",
-    "url": "https://blog.karthickshiva.dev/about.html",
-    "description": "Engineer, AI practitioner, mathematician, and music theorist. Building intelligent systems grounded in first principles.",
-    "sameAs": ["https://github.com/karthickshiva"],
-    "knowsAbout": ["Artificial Intelligence", "Machine Learning", "Mathematics", "Software Engineering", "Music Theory"]
-  }
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Karthick Shiva",
+  "url": "https://blog.karthickshiva.dev/about.html",
+  "description": "Engineer working across AI systems, software architecture, and the mathematics that keeps both honest.",
+  "sameAs": ["https://github.com/karthickshiva"],
+  "knowsAbout": ["Artificial Intelligence", "Software Engineering", "Mathematics", "Machine Learning Systems"]
+}
   </script>
 </head>
-<body>
-  <header>
-    <div class="container">
-      <a href="/" class="site-title">Signals &amp; Systems<span> — blog.karthickshiva.dev</span></a>
-      <nav>
+<body class="page-about">
+  <div class="site-background" aria-hidden="true"></div>
+  <header class="site-header">
+    <div class="site-shell">
+      <a href="/" class="brand">
+        <span class="brand-mark">KS</span>
+        <span class="brand-copy">
+          <strong>Signals &amp; Systems</strong>
+          <span>Minimal notes on AI systems, software engineering, and the math underneath.</span>
+        </span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
         <a href="/">posts</a>
-        <a href="about.html">about</a>
+        <a href="/about.html" aria-current="page">about</a>
+        <a href="/feed.xml">rss</a>
       </nav>
     </div>
   </header>
 
-  <main>
-    <div class="container">
-      <div class="about-content">
-        <h1>about</h1>
-        <p>
-          I'm Karthick Shiva — engineer, AI practitioner, and recovering mathematician.
-          I design and build AI systems for a living, with a focus on making models that are
-          not just accurate but interpretable, robust, and grounded in first principles.
+  <main class="site-main">
+    <section class="site-shell about-shell">
+      <section class="about-hero panel">
+        <p class="eyebrow">About</p>
+        <h1>Building systems that still make sense under inspection.</h1>
+        <p class="about-intro">
+          I work on AI systems and software architecture, but I tend to approach both from the
+          same direction: understand the structure first, then optimize. This site is where I
+          write down the arguments, tradeoffs, and first-principles models that keep showing up.
         </p>
-        <p>
-          Mathematics is the lens I use for everything. Whether it's probability theory behind a
-          transformer, the topology of a latent space, or the algebraic structure hiding inside a
-          chord progression — I believe rigorous thinking makes better engineers and better ideas.
-        </p>
-        <p>
-          Music theory is my other obsession. I find it deeply mathematical: voice leading follows
-          rules of tension and resolution that look a lot like optimisation; harmonic series is
-          just physics; counterpoint is constraint satisfaction. It keeps me honest about the
-          difference between pattern and understanding.
-        </p>
-        <p>
-          This blog is where all of it meets: AI, engineering, mathematics, and occasionally music.
-          No tracking. No ads. No JavaScript frameworks. Just clear thinking and a stylesheet.
-        </p>
-        <p>
-          Find me on <a href="https://github.com/karthickshiva" target="_blank" rel="noopener">GitHub</a>.
-        </p>
+        <div class="about-links">
+          <a href="https://github.com/karthickshiva" target="_blank" rel="noopener">GitHub</a>
+          <a href="/feed.xml">RSS</a>
+        </div>
+      </section>
+
+      <div class="about-grid">
+        <section class="about-story panel">
+          <p class="eyebrow">Working model</p>
+          <p>
+            My background sits somewhere between engineering practice and mathematical taste.
+            I care about systems that are interpretable, robust, and boring in the places that
+            should be boring. That usually means strong abstractions, measurable feedback loops,
+            and less tolerance for hand-wavy claims than most hype cycles allow.
+          </p>
+          <p>
+            The writing here stays close to that. Expect essays on model evaluation, software
+            design, typing, probability, optimization, and the occasional note on learning itself.
+            If a topic cannot survive contact with production or first principles, it usually does
+            not survive the draft either.
+          </p>
+        </section>
+
+        <section class="about-principles panel">
+          <p class="eyebrow">Defaults</p>
+          <ul>
+            <li>Prefer explicit systems over clever ones.</li>
+            <li>Benchmarks matter less than deployment evidence.</li>
+            <li>Mathematics is useful when it sharpens engineering judgment.</li>
+            <li>Static sites, open feeds, and small tooling stacks age well.</li>
+          </ul>
+        </section>
       </div>
-    </div>
+
+      <section class="about-stack panel">
+        <p class="eyebrow">Site stack</p>
+        <p>
+          The blog is intentionally small: source posts live in <code>content/posts</code>,
+          drafts live in <code>content/drafts</code>, and <code>./build-site</code> regenerates
+          the homepage, post pages, RSS feed, sitemap, and robots file. No framework runtime,
+          no CMS, no manual SEO drift.
+        </p>
+      </section>
+    </section>
   </main>
 
-  <footer>
-    <div class="container">
-      <p>blog.karthickshiva.dev</p>
-      <p>built with html &amp; css. no frameworks.</p>
+  <footer class="site-footer">
+    <div class="site-shell footer-grid">
+      <p>Signals &amp; Systems</p>
+      <p>Static HTML. Generated metadata. No JavaScript runtime.</p>
     </div>
   </footer>
 </body>

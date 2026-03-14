@@ -3,162 +3,182 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Every major lab ships a model, immediately publishes a chart where their model wins, and calls it progress. I'm done buying it.">
+  <meta name="description" content="Every major lab ships a model, immediately publishes a chart where their model wins, and calls it progress. I&#x27;m done buying it.">
   <meta name="author" content="Karthick Shiva">
-  <title>Benchmarks Are Broken and We're All Pretending Otherwise — blog.karthickshiva.dev</title>
-
+  <meta name="robots" content="index,follow">
+  <title>Benchmarks Are Broken and We&#x27;re All Pretending Otherwise | Signals &amp; Systems</title>
   <link rel="canonical" href="https://blog.karthickshiva.dev/posts/benchmarks-are-broken.html">
   <link rel="alternate" type="application/rss+xml" title="Signals &amp; Systems" href="https://blog.karthickshiva.dev/feed.xml">
-  <link rel="stylesheet" href="../css/style.css">
-
-  <!-- Open Graph -->
+  <link rel="stylesheet" href="/css/style.css">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Signals &amp; Systems">
-  <meta property="og:title" content="Benchmarks Are Broken and We're All Pretending Otherwise">
-  <meta property="og:description" content="Every major lab ships a model, immediately publishes a chart where their model wins, and calls it progress. I'm done buying it.">
+  <meta property="og:title" content="Benchmarks Are Broken and We&#x27;re All Pretending Otherwise">
+  <meta property="og:description" content="Every major lab ships a model, immediately publishes a chart where their model wins, and calls it progress. I&#x27;m done buying it.">
   <meta property="og:url" content="https://blog.karthickshiva.dev/posts/benchmarks-are-broken.html">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Benchmarks Are Broken and We&#x27;re All Pretending Otherwise">
+  <meta name="twitter:description" content="Every major lab ships a model, immediately publishes a chart where their model wins, and calls it progress. I&#x27;m done buying it.">
   <meta property="article:published_time" content="2026-03-12">
   <meta property="article:author" content="Karthick Shiva">
+  <meta property="article:section" content="AI">
   <meta property="article:tag" content="AI">
   <meta property="article:tag" content="machine learning">
   <meta property="article:tag" content="benchmarks">
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Benchmarks Are Broken and We're All Pretending Otherwise">
-  <meta name="twitter:description" content="Every major lab ships a model, immediately publishes a chart where their model wins, and calls it progress. I'm done buying it.">
-
-  <!-- JSON-LD -->
+  <meta property="article:tag" content="LLM evaluation">
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    "headline": "Benchmarks Are Broken and We're All Pretending Otherwise",
-    "description": "Every major lab ships a model, immediately publishes a chart where their model wins, and calls it progress. I'm done buying it.",
-    "url": "https://blog.karthickshiva.dev/posts/benchmarks-are-broken.html",
-    "datePublished": "2026-03-12",
-    "keywords": ["AI", "machine learning", "benchmarks", "LLM evaluation"],
-    "author": {
-      "@type": "Person",
-      "name": "Karthick Shiva",
-      "url": "https://blog.karthickshiva.dev/about.html"
-    },
-    "publisher": {
-      "@type": "Person",
-      "name": "Karthick Shiva",
-      "url": "https://blog.karthickshiva.dev/"
-    },
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": "https://blog.karthickshiva.dev/posts/benchmarks-are-broken.html"
-    }
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Benchmarks Are Broken and We're All Pretending Otherwise",
+  "description": "Every major lab ships a model, immediately publishes a chart where their model wins, and calls it progress. I'm done buying it.",
+  "url": "https://blog.karthickshiva.dev/posts/benchmarks-are-broken.html",
+  "datePublished": "2026-03-12",
+  "keywords": [
+    "AI",
+    "machine learning",
+    "benchmarks",
+    "LLM evaluation"
+  ],
+  "wordCount": 573,
+  "timeRequired": "PT3M",
+  "author": {
+    "@type": "Person",
+    "name": "Karthick Shiva",
+    "url": "https://blog.karthickshiva.dev/about.html"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Karthick Shiva",
+    "url": "https://blog.karthickshiva.dev"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://blog.karthickshiva.dev/posts/benchmarks-are-broken.html"
   }
+}
   </script>
 </head>
-<body>
-  <header>
-    <div class="container">
-      <a href="/" class="site-title">Signals &amp; Systems<span> — blog.karthickshiva.dev</span></a>
-      <nav>
-        <a href="/">posts</a>
+<body class="page-post">
+  <div class="site-background" aria-hidden="true"></div>
+  <header class="site-header">
+    <div class="site-shell">
+      <a href="/" class="brand">
+        <span class="brand-mark">KS</span>
+        <span class="brand-copy">
+          <strong>Signals & Systems</strong>
+          <span>Minimal notes on AI systems, software engineering, and the math underneath.</span>
+        </span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="/" aria-current="page">posts</a>
         <a href="/about.html">about</a>
+        <a href="/feed.xml">rss</a>
       </nav>
     </div>
   </header>
-
-  <main>
-    <div class="container">
-      <article>
-        <div class="post-header">
-          <div class="post-header-meta">
-            <time class="post-date" datetime="2026-03-12">2026-03-12</time>
-            <span class="post-tag">AI</span>
+  <main class="site-main">
+    <article class="site-shell article-shell">
+      <section class="article-hero panel">
+        <p class="eyebrow">Published Mar 12, 2026</p>
+        <h1>Benchmarks Are Broken and We&#x27;re All Pretending Otherwise</h1>
+        <p class="article-dek">Every major lab ships a model, immediately publishes a chart where their model wins, and calls it progress. I&#x27;m done buying it.</p>
+        <div class="article-meta">
+          <span>AI</span>
+          <span>3 min read</span>
+          <span>573 words</span>
+        </div>
+      </section>
+      <div class="article-layout">
+        <aside class="article-aside">
+          <div class="panel">
+            <p class="side-label">Filed under</p>
+            <p class="aside-tag">AI</p>
+            <p class="aside-copy">Keywords: AI, machine learning, benchmarks, LLM evaluation</p>
           </div>
-          <h1>Benchmarks Are Broken and We're All Pretending Otherwise</h1>
+        </aside>
+        <div class="article-body panel">
+          <div class="post-content">
+<p>
+  I've been building and evaluating AI systems professionally for years now, and I want to say something
+  that the industry keeps dancing around: <strong>the benchmark leaderboard is a performance, not a measurement.</strong>
+  Every major lab ships a model, immediately publishes a chart where their model wins,
+  and calls it scientific progress. I'm done buying it.
+</p>
+
+<h2>The contamination problem is not a minor footnote</h2>
+<p>
+  When a model is trained on data scraped from the internet, and the benchmark dataset
+  also lives on the internet, you don't have evaluation — you have memorisation with extra steps.
+  The labs know this. The researchers know this. The papers say "we took steps to mitigate
+  contamination" and then we all nod and move on. This is not rigorous. This is not science.
+  This is a press release wearing a t-shirt with equations on it.
+</p>
+<p>
+  MMLU was published in 2020. By 2023 it was effectively saturated. By 2024 it was
+  being used to rank models that had almost certainly seen it during training.
+  The response from the field was to publish MMLU-Pro and MMLU-Redux and keep the
+  same fundamental carousel going. The problem isn't the specific benchmark — it's
+  the incentive structure that turns any benchmark into a target the moment it matters.
+</p>
+
+<h2>Benchmark leaderboards select for benchmark performance</h2>
+<p>
+  This sounds obvious but the implications are rarely followed to their logical conclusion.
+  If a lab optimises hard on HumanEval, they get a model that is very good at the
+  specific style of Python problems in HumanEval. That model may be worse on the
+  actual Python you write at work — the kind with messy context, implicit requirements,
+  and a codebase that predates type annotations.
+</p>
+<p>
+  I've experienced this firsthand. I've had production bugs that a top-of-leaderboard
+  model confidently got wrong while a mid-tier model stumbled toward the right answer.
+  The difference wasn't capability — it was that my problem didn't look like the
+  training distribution for the benchmark. Capability is distribution-relative.
+  That's the whole point of generalisation, and it's what the leaderboard doesn't measure.
+</p>
+
+<h2>The eval that actually matters is yours</h2>
+<p>
+  I've started building private eval sets for every serious project I work on.
+  Not public benchmarks. Not someone else's test suite. Mine. Problems that look
+  exactly like my distribution: my edge cases, my failure modes, my tolerance for
+  hallucination in this specific context. It takes time to build. It's the most
+  valuable engineering work I do.
+</p>
+<p>
+  The dirty secret is that this is what the labs do too — they have internal evals
+  that they never publish because the moment you publish a benchmark it starts dying.
+  They cherry-pick the public ones that make their model look good. This isn't
+  conspiracy; it's rational behaviour given the incentive structure. The solution
+  is to stop treating public leaderboards as ground truth and build your own signal.
+</p>
+
+<h2>What I actually trust</h2>
+<p>
+  I trust published case studies from teams who deployed a specific model on a specific
+  task and measured real outcomes — latency, error rate, user preference, cost.
+  I trust ablations where a researcher ran the same task with and without a
+  component and showed the delta. I trust my own evals on my own data.
+</p>
+<p>
+  I do not trust any chart that puts "our model" in the top right corner,
+  published the same week the model shipped, on a benchmark that didn't exist
+  six months ago. That's not a claim about AI capability.
+  That's a fundraising document wearing a lab coat.
+</p>
+          </div>
         </div>
-
-        <div class="post-content">
-          <p>
-            I've been building and evaluating AI systems professionally for years now, and I want to say something
-            that the industry keeps dancing around: <strong>the benchmark leaderboard is a performance, not a measurement.</strong>
-            Every major lab ships a model, immediately publishes a chart where their model wins,
-            and calls it scientific progress. I'm done buying it.
-          </p>
-
-          <h2>The contamination problem is not a minor footnote</h2>
-          <p>
-            When a model is trained on data scraped from the internet, and the benchmark dataset
-            also lives on the internet, you don't have evaluation — you have memorisation with extra steps.
-            The labs know this. The researchers know this. The papers say "we took steps to mitigate
-            contamination" and then we all nod and move on. This is not rigorous. This is not science.
-            This is a press release wearing a t-shirt with equations on it.
-          </p>
-          <p>
-            MMLU was published in 2020. By 2023 it was effectively saturated. By 2024 it was
-            being used to rank models that had almost certainly seen it during training.
-            The response from the field was to publish MMLU-Pro and MMLU-Redux and keep the
-            same fundamental carousel going. The problem isn't the specific benchmark — it's
-            the incentive structure that turns any benchmark into a target the moment it matters.
-          </p>
-
-          <h2>Benchmark leaderboards select for benchmark performance</h2>
-          <p>
-            This sounds obvious but the implications are rarely followed to their logical conclusion.
-            If a lab optimises hard on HumanEval, they get a model that is very good at the
-            specific style of Python problems in HumanEval. That model may be worse on the
-            actual Python you write at work — the kind with messy context, implicit requirements,
-            and a codebase that predates type annotations.
-          </p>
-          <p>
-            I've experienced this firsthand. I've had production bugs that a top-of-leaderboard
-            model confidently got wrong while a mid-tier model stumbled toward the right answer.
-            The difference wasn't capability — it was that my problem didn't look like the
-            training distribution for the benchmark. Capability is distribution-relative.
-            That's the whole point of generalisation, and it's what the leaderboard doesn't measure.
-          </p>
-
-          <h2>The eval that actually matters is yours</h2>
-          <p>
-            I've started building private eval sets for every serious project I work on.
-            Not public benchmarks. Not someone else's test suite. Mine. Problems that look
-            exactly like my distribution: my edge cases, my failure modes, my tolerance for
-            hallucination in this specific context. It takes time to build. It's the most
-            valuable engineering work I do.
-          </p>
-          <p>
-            The dirty secret is that this is what the labs do too — they have internal evals
-            that they never publish because the moment you publish a benchmark it starts dying.
-            They cherry-pick the public ones that make their model look good. This isn't
-            conspiracy; it's rational behaviour given the incentive structure. The solution
-            is to stop treating public leaderboards as ground truth and build your own signal.
-          </p>
-
-          <h2>What I actually trust</h2>
-          <p>
-            I trust published case studies from teams who deployed a specific model on a specific
-            task and measured real outcomes — latency, error rate, user preference, cost.
-            I trust ablations where a researcher ran the same task with and without a
-            component and showed the delta. I trust my own evals on my own data.
-          </p>
-          <p>
-            I do not trust any chart that puts "our model" in the top right corner,
-            published the same week the model shipped, on a benchmark that didn't exist
-            six months ago. That's not a claim about AI capability.
-            That's a fundraising document wearing a lab coat.
-          </p>
-        </div>
-
-        <div class="post-footer">
-          <a href="/" class="back-link">← back to posts</a>
-        </div>
-      </article>
-    </div>
+      </div>
+      <div class="article-footer">
+        <a href="/" class="back-link">Back to all posts</a>
+      </div>
+    </article>
   </main>
-
-  <footer>
-    <div class="container">
-      <p>blog.karthickshiva.dev</p>
-      <p>built with html &amp; css. no frameworks.</p>
+  <footer class="site-footer">
+    <div class="site-shell footer-grid">
+      <p>Signals & Systems</p>
+      <p>Static HTML. Generated metadata. No JavaScript runtime.</p>
     </div>
   </footer>
 </body>

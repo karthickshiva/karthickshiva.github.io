@@ -3,171 +3,194 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="I've worked in Python codebases that should be indicted. Strong static types aren't a preference — they're the difference between a system and a pile of guesses.">
+  <meta name="description" content="Strong static types aren&#x27;t a preference — they&#x27;re the difference between a system and a pile of guesses.">
   <meta name="author" content="Karthick Shiva">
-  <title>Types Are Not Optional: A Rant in Defence of Static Typing — blog.karthickshiva.dev</title>
-
+  <meta name="robots" content="index,follow">
+  <title>Types Are Not Optional: A Rant in Defence of Static Typing | Signals &amp; Systems</title>
   <link rel="canonical" href="https://blog.karthickshiva.dev/posts/types-are-not-optional.html">
   <link rel="alternate" type="application/rss+xml" title="Signals &amp; Systems" href="https://blog.karthickshiva.dev/feed.xml">
-  <link rel="stylesheet" href="../css/style.css">
-
-  <!-- Open Graph -->
+  <link rel="stylesheet" href="/css/style.css">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Signals &amp; Systems">
   <meta property="og:title" content="Types Are Not Optional: A Rant in Defence of Static Typing">
-  <meta property="og:description" content="Strong static types aren't a preference — they're the difference between a system and a pile of guesses.">
+  <meta property="og:description" content="Strong static types aren&#x27;t a preference — they&#x27;re the difference between a system and a pile of guesses.">
   <meta property="og:url" content="https://blog.karthickshiva.dev/posts/types-are-not-optional.html">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Types Are Not Optional: A Rant in Defence of Static Typing">
+  <meta name="twitter:description" content="Strong static types aren&#x27;t a preference — they&#x27;re the difference between a system and a pile of guesses.">
   <meta property="article:published_time" content="2026-03-05">
   <meta property="article:author" content="Karthick Shiva">
+  <meta property="article:section" content="engineering">
   <meta property="article:tag" content="engineering">
   <meta property="article:tag" content="static typing">
   <meta property="article:tag" content="Python">
   <meta property="article:tag" content="Go">
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Types Are Not Optional: A Rant in Defence of Static Typing">
-  <meta name="twitter:description" content="Strong static types aren't a preference — they're the difference between a system and a pile of guesses.">
-
-  <!-- JSON-LD -->
+  <meta property="article:tag" content="mypy">
+  <meta property="article:tag" content="type systems">
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    "headline": "Types Are Not Optional: A Rant in Defence of Static Typing",
-    "description": "Strong static types aren't a preference — they're the difference between a system and a pile of guesses.",
-    "url": "https://blog.karthickshiva.dev/posts/types-are-not-optional.html",
-    "datePublished": "2026-03-05",
-    "keywords": ["engineering", "static typing", "Python", "Go", "mypy", "type systems"],
-    "author": {
-      "@type": "Person",
-      "name": "Karthick Shiva",
-      "url": "https://blog.karthickshiva.dev/about.html"
-    },
-    "publisher": {
-      "@type": "Person",
-      "name": "Karthick Shiva",
-      "url": "https://blog.karthickshiva.dev/"
-    },
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": "https://blog.karthickshiva.dev/posts/types-are-not-optional.html"
-    }
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Types Are Not Optional: A Rant in Defence of Static Typing",
+  "description": "Strong static types aren't a preference — they're the difference between a system and a pile of guesses.",
+  "url": "https://blog.karthickshiva.dev/posts/types-are-not-optional.html",
+  "datePublished": "2026-03-05",
+  "keywords": [
+    "engineering",
+    "static typing",
+    "Python",
+    "Go",
+    "mypy",
+    "type systems"
+  ],
+  "wordCount": 604,
+  "timeRequired": "PT3M",
+  "author": {
+    "@type": "Person",
+    "name": "Karthick Shiva",
+    "url": "https://blog.karthickshiva.dev/about.html"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Karthick Shiva",
+    "url": "https://blog.karthickshiva.dev"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://blog.karthickshiva.dev/posts/types-are-not-optional.html"
   }
+}
   </script>
 </head>
-<body>
-  <header>
-    <div class="container">
-      <a href="/" class="site-title">Signals &amp; Systems<span> — blog.karthickshiva.dev</span></a>
-      <nav>
-        <a href="/">posts</a>
+<body class="page-post">
+  <div class="site-background" aria-hidden="true"></div>
+  <header class="site-header">
+    <div class="site-shell">
+      <a href="/" class="brand">
+        <span class="brand-mark">KS</span>
+        <span class="brand-copy">
+          <strong>Signals & Systems</strong>
+          <span>Minimal notes on AI systems, software engineering, and the math underneath.</span>
+        </span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="/" aria-current="page">posts</a>
         <a href="/about.html">about</a>
+        <a href="/feed.xml">rss</a>
       </nav>
     </div>
   </header>
-
-  <main>
-    <div class="container">
-      <article>
-        <div class="post-header">
-          <div class="post-header-meta">
-            <time class="post-date" datetime="2026-03-05">2026-03-05</time>
-            <span class="post-tag">engineering</span>
+  <main class="site-main">
+    <article class="site-shell article-shell">
+      <section class="article-hero panel">
+        <p class="eyebrow">Published Mar 5, 2026</p>
+        <h1>Types Are Not Optional: A Rant in Defence of Static Typing</h1>
+        <p class="article-dek">Strong static types aren&#x27;t a preference — they&#x27;re the difference between a system and a pile of guesses.</p>
+        <div class="article-meta">
+          <span>engineering</span>
+          <span>3 min read</span>
+          <span>604 words</span>
+        </div>
+      </section>
+      <div class="article-layout">
+        <aside class="article-aside">
+          <div class="panel">
+            <p class="side-label">Filed under</p>
+            <p class="aside-tag">engineering</p>
+            <p class="aside-copy">Keywords: engineering, static typing, Python, Go, mypy, type systems</p>
           </div>
-          <h1>Types Are Not Optional: A Rant in Defence of Static Typing</h1>
+        </aside>
+        <div class="article-body panel">
+          <div class="post-content">
+<p>
+  I have a strong opinion about this and I'm going to state it plainly:
+  writing production software without a static type system is an act of
+  aggression against the people who have to maintain it after you leave.
+  I've spent too many hours reading Python that returns <code>Optional[Union[str, int, None]]</code>
+  from a function named <code>get_result()</code> to pretend otherwise.
+</p>
+
+<h2>Dynamic typing is not freedom — it's deferred debt</h2>
+<p>
+  The argument for dynamic languages is always velocity: you ship faster when you
+  don't have to declare types. I believed this for longer than I should have.
+  It's true in the first two weeks of a project. It becomes false somewhere around
+  the first time you refactor a core abstraction and realise you have no idea
+  what's calling it or what it expects back.
+</p>
+<p>
+  Static types are documentation that can't go stale. They're contracts that the
+  compiler enforces so you don't have to. Every <code>dict</code> parameter you
+  accept instead of a typed dataclass is a small act of cowardice — you're pushing
+  the verification work to runtime, where it fails at 2am in production instead of
+  at your desk at 2pm during development.
+</p>
+
+<h2>The ML ecosystem is the worst offender</h2>
+<p>
+  The codebase I see most frequently is ML research code that turned into production ML code
+  without ever being cleaned up. Tensors of unknown shape. Functions that accept either a
+  batch or a single sample but the distinction is handled by a try/except inside.
+  A training loop where the loss variable is reassigned four times in the same scope
+  and you genuinely cannot tell which value is logged.
+</p>
+<p>
+  PyTorch, to its credit, has gotten substantially better at typed interfaces.
+  JAX has <code>jaxtyping</code>. The ecosystem is catching up. But the culture
+  hasn't — there's still a strong association between "I'm a researcher" and
+  "I write untyped Python," as if rigour is the enemy of creativity.
+  It isn't. Sloppy types are the enemy of <em>other people's</em> creativity,
+  because they burn their time just understanding your code instead of building on it.
+</p>
+
+<h2>Go did this right</h2>
+<p>
+  Go is not a beautiful language. It doesn't have the elegance of Haskell
+  or the expressiveness of Rust. But it has something worth more for most production
+  systems: it's almost impossible to write Go that someone else can't read in
+  ten minutes. The type system is simple and present everywhere.
+  You always know what a function takes and returns.
+  Interfaces are structural and explicit. It's not magic — it's engineering.
+</p>
+<p>
+  I've maintained Go services for three years after writing them.
+  I've never once had to spend an hour rediscovering what a function returns.
+  That's the dividend of boring, explicit types. It compounds.
+</p>
+
+<h2>What I actually do</h2>
+<p>
+  For Python I use <code>mypy</code> in strict mode from day one and I make it
+  a CI gate. I don't merge code that doesn't type-check. This is not popular.
+  People complain that <code>mypy</code> is slow and annoying and sometimes wrong.
+  All true. It's still better than the alternative. I use <code>pydantic</code>
+  for all data boundaries — anything that crosses a function signature that I don't
+  fully control gets validated at the boundary. Internally I use dataclasses with
+  type annotations everywhere.
+</p>
+<p>
+  For new services, I reach for Go unless there's a specific reason not to.
+  For ML, I type the training loop strictly and leave the research scratch area
+  loose — but I enforce that the boundary between them is typed and tested.
+</p>
+<p>
+  Types won't make you a better thinker. But they will make your thinking visible,
+  and visible thinking is what separates code you can build on from code that
+  slowly suffocates the people who inherit it.
+</p>
+          </div>
         </div>
-
-        <div class="post-content">
-          <p>
-            I have a strong opinion about this and I'm going to state it plainly:
-            writing production software without a static type system is an act of
-            aggression against the people who have to maintain it after you leave.
-            I've spent too many hours reading Python that returns <code>Optional[Union[str, int, None]]</code>
-            from a function named <code>get_result()</code> to pretend otherwise.
-          </p>
-
-          <h2>Dynamic typing is not freedom — it's deferred debt</h2>
-          <p>
-            The argument for dynamic languages is always velocity: you ship faster when you
-            don't have to declare types. I believed this for longer than I should have.
-            It's true in the first two weeks of a project. It becomes false somewhere around
-            the first time you refactor a core abstraction and realise you have no idea
-            what's calling it or what it expects back.
-          </p>
-          <p>
-            Static types are documentation that can't go stale. They're contracts that the
-            compiler enforces so you don't have to. Every <code>dict</code> parameter you
-            accept instead of a typed dataclass is a small act of cowardice — you're pushing
-            the verification work to runtime, where it fails at 2am in production instead of
-            at your desk at 2pm during development.
-          </p>
-
-          <h2>The ML ecosystem is the worst offender</h2>
-          <p>
-            The codebase I see most frequently is ML research code that turned into production ML code
-            without ever being cleaned up. Tensors of unknown shape. Functions that accept either a
-            batch or a single sample but the distinction is handled by a try/except inside.
-            A training loop where the loss variable is reassigned four times in the same scope
-            and you genuinely cannot tell which value is logged.
-          </p>
-          <p>
-            PyTorch, to its credit, has gotten substantially better at typed interfaces.
-            JAX has <code>jaxtyping</code>. The ecosystem is catching up. But the culture
-            hasn't — there's still a strong association between "I'm a researcher" and
-            "I write untyped Python," as if rigour is the enemy of creativity.
-            It isn't. Sloppy types are the enemy of <em>other people's</em> creativity,
-            because they burn their time just understanding your code instead of building on it.
-          </p>
-
-          <h2>Go did this right</h2>
-          <p>
-            Go is not a beautiful language. It doesn't have the elegance of Haskell
-            or the expressiveness of Rust. But it has something worth more for most production
-            systems: it's almost impossible to write Go that someone else can't read in
-            ten minutes. The type system is simple and present everywhere.
-            You always know what a function takes and returns.
-            Interfaces are structural and explicit. It's not magic — it's engineering.
-          </p>
-          <p>
-            I've maintained Go services for three years after writing them.
-            I've never once had to spend an hour rediscovering what a function returns.
-            That's the dividend of boring, explicit types. It compounds.
-          </p>
-
-          <h2>What I actually do</h2>
-          <p>
-            For Python I use <code>mypy</code> in strict mode from day one and I make it
-            a CI gate. I don't merge code that doesn't type-check. This is not popular.
-            People complain that <code>mypy</code> is slow and annoying and sometimes wrong.
-            All true. It's still better than the alternative. I use <code>pydantic</code>
-            for all data boundaries — anything that crosses a function signature that I don't
-            fully control gets validated at the boundary. Internally I use dataclasses with
-            type annotations everywhere.
-          </p>
-          <p>
-            For new services, I reach for Go unless there's a specific reason not to.
-            For ML, I type the training loop strictly and leave the research scratch area
-            loose — but I enforce that the boundary between them is typed and tested.
-          </p>
-          <p>
-            Types won't make you a better thinker. But they will make your thinking visible,
-            and visible thinking is what separates code you can build on from code that
-            slowly suffocates the people who inherit it.
-          </p>
-        </div>
-
-        <div class="post-footer">
-          <a href="/" class="back-link">← back to posts</a>
-        </div>
-      </article>
-    </div>
+      </div>
+      <div class="article-footer">
+        <a href="/" class="back-link">Back to all posts</a>
+      </div>
+    </article>
   </main>
-
-  <footer>
-    <div class="container">
-      <p>blog.karthickshiva.dev</p>
-      <p>built with html &amp; css. no frameworks.</p>
+  <footer class="site-footer">
+    <div class="site-shell footer-grid">
+      <p>Signals & Systems</p>
+      <p>Static HTML. Generated metadata. No JavaScript runtime.</p>
     </div>
   </footer>
 </body>

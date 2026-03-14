@@ -3,36 +3,32 @@
   <channel>
     <title>Signals &amp; Systems</title>
     <link>https://blog.karthickshiva.dev/</link>
-    <description>Karthick Shiva writing on AI, engineering, mathematics, and the world.</description>
+    <description>Essays on AI systems, software engineering, and mathematical thinking. Static HTML, RSS-first, and SEO-generated.</description>
     <language>en</language>
     <atom:link href="https://blog.karthickshiva.dev/feed.xml" rel="self" type="application/rss+xml"/>
-
     <item>
-      <title>Benchmarks Are Broken and We&apos;re All Pretending Otherwise</title>
+      <title>Benchmarks Are Broken and We&#x27;re All Pretending Otherwise</title>
       <link>https://blog.karthickshiva.dev/posts/benchmarks-are-broken.html</link>
       <guid>https://blog.karthickshiva.dev/posts/benchmarks-are-broken.html</guid>
       <pubDate>Thu, 12 Mar 2026 00:00:00 +0000</pubDate>
-      <description>Every major lab ships a model, immediately publishes a chart where their model wins, and calls it progress. I&apos;m done buying it.</description>
+      <description>Every major lab ships a model, immediately publishes a chart where their model wins, and calls it progress. I&#x27;m done buying it.</description>
       <category>AI</category>
     </item>
-
     <item>
       <title>Types Are Not Optional: A Rant in Defence of Static Typing</title>
       <link>https://blog.karthickshiva.dev/posts/types-are-not-optional.html</link>
       <guid>https://blog.karthickshiva.dev/posts/types-are-not-optional.html</guid>
       <pubDate>Thu, 05 Mar 2026 00:00:00 +0000</pubDate>
-      <description>Strong static types aren&apos;t a preference — they&apos;re the difference between a system and a pile of guesses.</description>
+      <description>Strong static types aren&#x27;t a preference — they&#x27;re the difference between a system and a pile of guesses.</description>
       <category>engineering</category>
     </item>
-
     <item>
       <title>Math Is Not the Hard Part</title>
       <link>https://blog.karthickshiva.dev/posts/math-is-not-the-hard-part.html</link>
       <guid>https://blog.karthickshiva.dev/posts/math-is-not-the-hard-part.html</guid>
       <pubDate>Sun, 22 Feb 2026 00:00:00 +0000</pubDate>
-      <description>Every engineer I&apos;ve met who &apos;can&apos;t do math&apos; actually can. What they can&apos;t do is sit with confusion long enough for it to resolve. That&apos;s a different problem entirely.</description>
+      <description>Most engineers who think they can&#x27;t do math actually can. The real problem is staying with confusion long enough for understanding to form.</description>
       <category>mathematics</category>
     </item>
-
   </channel>
 </rss>
